@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Inicio</title>
+    <title>Contacto</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
@@ -22,13 +22,20 @@
       integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-mzK14yye5Z8XfW1aq6I5l5bQ/sffw8UtiWvb83MFmf/YU6nyBoDkR8vyZjQ4+be1"
+  crossorigin="anonymous"></script>
+
     <style>
         body {
           font-family: 'Roboto', sans-serif;
         }
+        #Contacto {
+  cursor: pointer;
+}
       </style>
   </head>
-  <Body>
+  <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <img src="Images/Logo.png" alt="Logo de mi sitio web">
@@ -38,7 +45,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="Index.html">Inicio</a>
+                <a class="nav-link" href="Index.html">Inicio</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link"   href="Nosotros.html">Nosotros</a>
@@ -50,7 +57,7 @@
                 <a class="nav-link" href="Login.html">Login</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link"  href="Contacto.html">Contacto</a>
+                  <a class="nav-link" id="Contacto" aria-current="page" data-bs-toggle="modal" data-bs-target="#contactModal">Contacto</a>
               </li>
             </ul>
             <form class="d-flex" role="search">
@@ -60,6 +67,57 @@
           </div>
         </div>
       </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="contactModalLabel">Formulario de Contacto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Formulario de contacto -->
+        <form>
+          <div class="mb-3">
+            <label for="nameInput" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nameInput" placeholder="Ingrese su nombre">
+          </div>
+          <div class="mb-3">
+            <label for="emailInput" class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" id="emailInput" placeholder="Ingrese su correo electrónico">
+          </div>
+          <div class="mb-3">
+            <label for="messageInput" class="form-label">Mensaje</label>
+            <textarea class="form-control" id="messageInput" rows="3" placeholder="Ingrese su mensaje"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Enviar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">¡Enviado con éxito!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Tu mensaje ha sido enviado con éxito.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
       <!-- HASTA AQUI VA EN TODAS LAS PAGINAS-->
 
     </Body>
