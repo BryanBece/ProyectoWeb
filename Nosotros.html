@@ -1,169 +1,179 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Galeria</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js"
-      integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-mzK14yye5Z8XfW1aq6I5l5bQ/sffw8UtiWvb83MFmf/YU6nyBoDkR8vyZjQ4+be1"
-  crossorigin="anonymous"></script>
 
-    <style>
-        body {
-          font-family: 'Roboto', sans-serif;
-        }
-        #Contacto {
-  cursor: pointer;
-}
-      </style>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <img src="Images/Logo.png" alt="Logo de mi sitio web">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Galeria</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" href="CSS/Style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js"
+    integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-mzK14yye5Z8XfW1aq6I5l5bQ/sffw8UtiWvb83MFmf/YU6nyBoDkR8vyZjQ4+be1"
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <img src="Images/Logo.png" alt="Logo de mi sitio web">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="Index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Nosotros.html">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Galeria.html">Galeria</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Login.html">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="Contacto" aria-current="page" data-bs-toggle="modal"
+              data-bs-target="#contactModal">Contacto</a>
+          </li>
+        </ul>
+        <button class="btn btn-outline-success" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasRight">Buscar</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasRightLabel">Búsqueda</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+    </div>
+    <div class="offcanvas-body">
+      <form>
+        <div class="mb-3">
+          <label for="busquedaInput" class="form-label">Buscar por artista</label>
+          <input type="text" class="form-control" id="busquedaInput" placeholder="Ingrese nombre de artista">
+        </div>
+        <button type="submit" class="btn btn-outline-success">Buscar</button>
+      </form>
+      <br>
+      <form>
+        <div class="mb-3">
+          <label for="busquedaInput" class="form-label">Buscar por obra</label>
+          <input type="text" class="form-control" id="busquedaInput" placeholder="Ingrese nombre de la obra">
+        </div>
+        <button type="submit" class="btn btn-outline-success">Buscar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="contactModalLabel">Formulario de Contacto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Formulario de contacto -->
+          <form>
+            <div class="mb-3">
+              <label for="nameInput" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="nameInput" placeholder="Ingrese su nombre" required>
+            </div>
+            <div class="mb-3">
+              <label for="emailInput" class="form-label">Correo electrónico</label>
+              <input type="email" class="form-control" id="emailInput" placeholder="Ingrese su correo electrónico"
+                required>
+            </div>
+            <div class="mb-3">
+              <label for="nameInput" class="form-label">Asunto</label>
+              <input type="text" class="form-control" id="nameInput" placeholder="Ingrese asunto">
+            </div>
+            <div class="mb-3">
+              <label for="messageInput" class="form-label">Mensaje</label>
+              <textarea class="form-control" id="messageInput" rows="3" placeholder="Ingrese su mensaje"
+                required></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Enviar
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="Index.html">Inicio</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link"   href="Nosotros.html">Nosotros</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="Galeria.html">Galeria</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="Login.html">Login</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" id="Contacto" aria-current="page" data-bs-toggle="modal" data-bs-target="#contactModal">Contacto</a>
-              </li>
-            </ul>
-            <button class="btn btn-outline-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">Buscar</button>
-          </div>
         </div>
-      </nav>
-      
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasRightLabel">Búsqueda</h5>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
-        </div>
-        <div class="offcanvas-body">
-          <form>
-            <div class="mb-3">
-              <label for="busquedaInput" class="form-label">Buscar por artista</label>
-              <input type="text" class="form-control" id="busquedaInput" placeholder="Ingrese nombre de artista">
-            </div>
-            <button type="submit" class="btn btn-outline-success">Buscar</button>
-          </form>
-          <br>
-          <form>
-            <div class="mb-3">
-              <label for="busquedaInput" class="form-label">Buscar por obra</label>
-              <input type="text" class="form-control" id="busquedaInput" placeholder="Ingrese nombre de la obra">
-            </div>
-            <button type="submit" class="btn btn-outline-success">Buscar</button>
-          </form>
-        </div>
-      </div>
-
-<!-- Modal -->
-<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="contactModalLabel">Formulario de Contacto</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Formulario de contacto -->
-        <form>
-          <div class="mb-3">
-            <label for="nameInput" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nameInput" placeholder="Ingrese su nombre" required>
-          </div>
-          <div class="mb-3">
-            <label for="emailInput" class="form-label">Correo electrónico</label>
-            <input type="email" class="form-control" id="emailInput" placeholder="Ingrese su correo electrónico" required>
-          </div>
-          <div class="mb-3">
-            <label for="nameInput" class="form-label">Asunto</label>
-            <input type="text" class="form-control" id="nameInput" placeholder="Ingrese asunto">
-          </div>
-          <div class="mb-3">
-            <label for="messageInput" class="form-label">Mensaje</label>
-            <textarea class="form-control" id="messageInput" rows="3" placeholder="Ingrese su mensaje" required></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Enviar
-        </button>
       </div>
     </div>
   </div>
-</div>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">¡Enviado con éxito!</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Tu mensaje ha sido enviado con éxito.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¡Enviado con éxito!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Tu mensaje ha sido enviado con éxito.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-      <!-- HASTA AQUI VA EN TODAS LAS PAGINAS-->
-    <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="d-flex align-items-center justify-content-center">
-                <img src="Images/Logo 500x500.png" alt="Descripción de la imagen">
-              </div>                  
-              <div class="container">
-                <p class="text-justify text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam accumsan libero et eleifend aliquet. Sed eleifend tortor a magna malesuada tempus. Morbi dignissim egestas vulputate. Proin ornare, mi nec lobortis sollicitudin, lectus enim pharetra justo, tristique molestie sapien velit a nibh. Aenean egestas arcu et nibh elementum laoreet. Nullam viverra massa sed risus eleifend facilisis. Duis eu ipsum sed massa suscipit consectetur hendrerit quis leo.
-
-                    Duis tincidunt sagittis sem vel pellentesque. Quisque bibendum massa ac nisl condimentum, et rhoncus neque pulvinar. Integer viverra in odio non bibendum. Mauris faucibus, arcu eu rhoncus vehicula, leo elit feugiat justo, quis tristique est nisi id tortor. Phasellus accumsan vehicula nibh. Duis id elementum massa. Vivamus sed elit cursus, tincidunt ligula quis, semper ligula. Nam non venenatis felis, ac maximus ex. Quisque mollis orci in enim tempor, sed ultrices nisi blandit. Fusce eu tellus placerat, efficitur sem vitae, tristique eros. Morbi consequat eros odio, eget dictum justo posuere at.
-                    
-                    Morbi viverra dui lacus, quis faucibus diam maximus nec. Nam id tortor faucibus, dapibus ipsum at, egestas justo. Etiam tempus massa sit amet felis sagittis sagittis. Donec porta in sem eget semper. Aenean fringilla condimentum enim, non tincidunt turpis cursus dignissim. Pellentesque et est ligula. Sed quis urna augue. Curabitur nec pellentesque mi. Interdum et malesuada fames ac ante ipsum primis in faucibus. In blandit, urna sed eleifend bibendum, purus velit mattis purus, ut bibendum arcu orci vel nisl. Duis iaculis enim pellentesque nunc placerat tempor. Sed laoreet neque libero, nec ornare orci tincidunt a. Vivamus imperdiet lacus lectus, id maximus est elementum non. Ut pulvinar tellus mauris, sit amet imperdiet velit sollicitudin eget. </p>
-              </div>
-                     
-          </div>
+  <!-- HASTA AQUI VA EN TODAS LAS PAGINAS-->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="d-flex align-items-center justify-content-center">
+          <img src="Images/Logo 500x500.png" alt="Descripción de la imagen">
         </div>
-      </div>
-    </body>
-  </html>
-  
+        <div class="container">
+          <p class="text-justify text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam accumsan
+            libero et eleifend aliquet. Sed eleifend tortor a magna malesuada tempus. Morbi dignissim egestas vulputate.
+            Proin ornare, mi nec lobortis sollicitudin, lectus enim pharetra justo, tristique molestie sapien velit a
+            nibh. Aenean egestas arcu et nibh elementum laoreet. Nullam viverra massa sed risus eleifend facilisis. Duis
+            eu ipsum sed massa suscipit consectetur hendrerit quis leo.
 
-  </body>
+            Duis tincidunt sagittis sem vel pellentesque. Quisque bibendum massa ac nisl condimentum, et rhoncus neque
+            pulvinar. Integer viverra in odio non bibendum. Mauris faucibus, arcu eu rhoncus vehicula, leo elit feugiat
+            justo, quis tristique est nisi id tortor. Phasellus accumsan vehicula nibh. Duis id elementum massa. Vivamus
+            sed elit cursus, tincidunt ligula quis, semper ligula. Nam non venenatis felis, ac maximus ex. Quisque
+            mollis orci in enim tempor, sed ultrices nisi blandit. Fusce eu tellus placerat, efficitur sem vitae,
+            tristique eros. Morbi consequat eros odio, eget dictum justo posuere at.
+
+            Morbi viverra dui lacus, quis faucibus diam maximus nec. Nam id tortor faucibus, dapibus ipsum at, egestas
+            justo. Etiam tempus massa sit amet felis sagittis sagittis. Donec porta in sem eget semper. Aenean fringilla
+            condimentum enim, non tincidunt turpis cursus dignissim. Pellentesque et est ligula. Sed quis urna augue.
+            Curabitur nec pellentesque mi. Interdum et malesuada fames ac ante ipsum primis in faucibus. In blandit,
+            urna sed eleifend bibendum, purus velit mattis purus, ut bibendum arcu orci vel nisl. Duis iaculis enim
+            pellentesque nunc placerat tempor. Sed laoreet neque libero, nec ornare orci tincidunt a. Vivamus imperdiet
+            lacus lectus, id maximus est elementum non. Ut pulvinar tellus mauris, sit amet imperdiet velit sollicitudin
+            eget. </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+
+</body>
+
 </html>
