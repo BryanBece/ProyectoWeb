@@ -10,3 +10,10 @@ h5{
     font-family: 'Alkatra', cursive;
 }
 
+.carousel-item img {
+    border: 2px solid black;
+    max-width: 700px;
+    height: 500px;
+    object-fit: cover;
+    box-shadow: 10px 20px 10px rgba(0,0,0,0.5);
+}
