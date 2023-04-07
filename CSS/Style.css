@@ -15,8 +15,13 @@ h5{
     border-radius: 10px;
 }
 
-  #ItemNavBar{
+#ItemNavBar{
     cursor: pointer;
   }
+
+#textoArtista{
+    font-weight: bold;
+  }
+
   
   
