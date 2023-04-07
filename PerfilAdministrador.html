@@ -67,21 +67,11 @@
             <li class="nav-item" id="ItemNavBar">
               <a
                 class="nav-link"
-                id="Formulario"
-                aria-current="page"
-                data-bs-toggle="modal"
-                data-bs-target="#formModal"
-                >Solicitudes</a
-              >
-            </li>
-            <li class="nav-item" id="ItemNavBar">
-              <a
-                class="nav-link"
                 id="mensaje"
                 aria-current="page"
                 data-bs-toggle="modal"
                 data-bs-target="#mesagModal"
-                >Mensaje</a
+                >Mensajes</a
               >
             </li>
             <li class="nav-item">
@@ -122,10 +112,429 @@
           <div class="modal-body">
             <h7>¡Aun no tienes mensajes!</h7>
           </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
         </div>
       </div>
     </div>
     <!--------------------------------------------fin modal mensaje------------------------------->
+    <table class="table align-middle mb-0 bg-white">
+      <thead class="bg-light">
+        <tr>
+          <th>Nombre</th>
+          <th>Perfil</th>
+          <th>Status</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center">
+              <img
+                src="Images/Artistas/Alfredo Francisco.png"
+                alt=""
+                style="width: 45px; height: 45px"
+                class="rounded-circle"
+              />
+              <div class="ms-3">
+                <p class="fw-bold mb-1">Alfredo Francisco</p>
+                <p class="text-muted mb-0">Alfredo.francisco@GroundZero.cl</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-link btn-sm btn-rounded"
+              data-bs-toggle="modal"
+              data-bs-target="#modalPerfil"
+            >
+              Ver Perfil
+            </button>
+          </td>
+          <td>
+            <i class="bi bi-patch-check-fill text-success"></i>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-link btn-sm btn-rounded"
+              data-bs-toggle="modal"
+              data-bs-target="#modalOk"
+            >
+              Solicitudes
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center">
+              <img
+                src="Images/Artistas/Jose Roman Sepulveda.png"
+                alt=""
+                style="width: 45px; height: 45px"
+                class="rounded-circle"
+              />
+              <div class="ms-3">
+                <p class="fw-bold mb-1">Jose Roman Sepulveda</p>
+                <p class="text-muted mb-0">Jose.sepulveda@GroundZero.cl</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-link btn-sm btn-rounded"
+              data-bs-toggle="modal"
+              data-bs-target="#modalPerfil"
+            >
+              Ver Perfil
+            </button>
+          </td>
+          <td>
+            <i class="bi bi-patch-exclamation text-warning"></i>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-link btn-sm btn-rounded"
+              data-bs-toggle="modal"
+              data-bs-target="#modalStatus"
+            >
+              Solicitudes
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center">
+              <img
+                src="Images/Artistas/Camila Martinez.png"
+                alt=""
+                style="width: 45px; height: 45px"
+                class="rounded-circle"
+              />
+              <div class="ms-3">
+                <p class="fw-bold mb-1">Camila Martinez</p>
+                <p class="text-muted mb-0">Camila.martinez@GroundZero.cl</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-link btn-sm btn-rounded"
+              data-bs-toggle="modal"
+              data-bs-target="#modalPerfil"
+            >
+              Ver Perfil
+            </button>
+          </td>
+          <td>
+            <i class="bi bi-patch-check-fill text-success"></i>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-link btn-sm btn-rounded"
+              data-bs-toggle="modal"
+              data-bs-target="#modalOk"
+            >
+              Solicitudes
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center">
+              <img
+                src="Images/Artistas/Laura Hidalgo.png"
+                alt=""
+                style="width: 45px; height: 45px"
+                class="rounded-circle"
+              />
+              <div class="ms-3">
+                <p class="fw-bold mb-1">Laura Hidaldo</p>
+                <p class="text-muted mb-0">Laura.hidalgo@GroundZero.cl</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-link btn-sm btn-rounded"
+              data-bs-toggle="modal"
+              data-bs-target="#modalPerfil"
+            >
+              Ver Perfil
+            </button>
+          </td>
+          <td>
+            <i class="bi bi-patch-check-fill text-success"></i>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-link btn-sm btn-rounded"
+              data-bs-toggle="modal"
+              data-bs-target="#modalOk"
+            >
+              Solicitudes
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center">
+              <img
+                src="Images/Artistas/Pedro Machuca.png"
+                alt=""
+                style="width: 45px; height: 45px"
+                class="rounded-circle"
+              />
+              <div class="ms-3">
+                <p class="fw-bold mb-1">Pedro Machuga</p>
+                <p class="text-muted mb-0">Pedro.machuca@GroundZero.cl</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-link btn-sm btn-rounded"
+              data-bs-toggle="modal"
+              data-bs-target="#modalPerfil"
+            >
+              Ver Perfil
+            </button>
+          </td>
+          <td>
+            <i class="bi bi-patch-check-fill text-success"></i>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-link btn-sm btn-rounded"
+              data-bs-toggle="modal"
+              data-bs-target="#modalOk"
+            >
+              Solicitudes
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Modal Perfil -->
+
+    <div
+      class="modal fade"
+      id="modalPerfil"
+      tabindex="-1"
+      aria-labelledby="mesagModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ModalPerfil">Perfil Artista</h5>
+
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <label for="Técnica">Nombre:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="ejemploInput"
+              placeholder="NombreArtista"
+              disabled
+            />
+            <label for="Técnica">Correo:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="ejemploInput"
+              placeholder="CorreoArtista"
+              disabled
+            />
+            <label for="Técnica">Número Obras:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="ejemploInput"
+              placeholder="NumeroObras"
+              disabled
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal No hay solicitudes -->
+    <div
+      class="modal fade"
+      id="modalOk"
+      tabindex="-1"
+      aria-labelledby="mesagModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalOk">Solicitudes Pendientes</h5>
+
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <h7>¡No hay solicitudes pendientes!</h7>
+            <i class="bi bi-patch-check-fill text-sucess"></i>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Aceptación / Rechazo-->
+    <div
+      class="modal fade"
+      id="modalStatus"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel3"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modaStatus">Solicitud Pendiente</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img src="Images/PinturaPrueba.jpg" class="d-block w-100" />
+            <div class="form-group">
+              <label for="Historia">Historia:</label>
+              <textarea
+                class="form-control"
+                id="Historia"
+                rows="3"
+                placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel feugiat dui, feugiat malesuada magna. Vivamus pretium sapien turpis, a tristique dolor dignissim vel. In tempor ac dolor nec dapibus."
+                disabled
+              ></textarea>
+              <label for="Descripción">Descripción:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="ejemploInput"
+                placeholder="Lore Ipsum"
+                disabled
+              />
+              <label for="Nombre">Nombre:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="ejemploInput"
+                placeholder="Lore Ipsum"
+                disabled
+              />
+              <label for="Precio">Precio:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="ejemploInput"
+                placeholder="$500000"
+                disabled
+              />
+              <label for="Técnica">Estilo:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="ejemploInput"
+                placeholder="A manito"
+                disabled
+              />
+              <label for="Técnica">Estilo:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="ejemploInput"
+                placeholder="100x50"
+                disabled
+              />
+            </div>
+
+            <form>
+              <div class="form-group">
+                <label for="Precio">Estado:</label>
+                <select class="form-select" aria-label="Default select example">
+                  <option selected>Seleccione opción</option>
+                  <option value="1">Aprobada</option>
+                  <option value="2">Rechazada</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="comentarioTextarea">Comentario:</label>
+                <textarea
+                  class="form-control"
+                  id="comentarioTextarea"
+                  rows="3"
+                ></textarea>
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-dark">Enviar</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Footer -->
 
