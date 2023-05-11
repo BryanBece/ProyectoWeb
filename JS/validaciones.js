@@ -72,9 +72,15 @@ function validarCampos() {
     var correo = document.getElementById("correo_contacto");
     var correoVal = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
-    if (nombre.value === "") {
+    if (nombre.value === "" || asunto.value === "" || !correoVal.test(correo.value) || mensaje.value === "") {
       nombre.classList.add("is-invalid");
       nombre.classList.remove("is-valid");
+      asunto.classList.remove("is-valid");
+      asunto.classList.add("is-invalid");
+      correo.classList.remove("is-valid");
+      correo.classList.add("is-invalid");
+      mensaje.classList.remove("is-valid");
+      mensaje.classList.add("is-invalid");
       $('#modalError').modal('show'); // Modal Error
       $('#modalError').on('hidden.bs.modal', function (e) { // Para que al cerrar el modal de error, se abra nuevamente el de formulario
         $('#modalFormulario').modal('show'); // Modal formulario
@@ -83,7 +89,57 @@ function validarCampos() {
     } else {
       nombre.classList.add("is-valid");
       nombre.classList.remove("is-invalid");
+      asunto.classList.add("is-valid");
+      asunto.classList.remove("is-invalid");
+      correo.classList.add("is-valid");
+      correo.classList.remove("is-invalid");
+      mensaje.classList.add("is-valid");
+      mensaje.classList.remove("is-invalid");
       return true;
     }
-  };
+  }
+
+  function validarCamposArt(){
+    var nombreObra = document.getElementById("nameObra");
+    var nombreArt = document.getElementById("nameArt");
+    var tecnica = document.getElementById("tecnica");
+    var precio = document.getElementById("precio");
+    var estado = document.getElementById("estado");
+    var imagen = document.getElementById("imagen");
+
+    if (nombreObra.value === "" || nombreArt.value === "" || tecnica.value === "" || precio.value === "" || 
+    estado.value === "" || imagen.value === "" ) {
+      nombreObra.classList.add("is-invalid");
+      nombreObra.classList.remove("is-valid");
+      nombreArt.classList.add("is-invalid");
+      nombreArt.classList.remove("is-valid");
+      tecnica.classList.add("is-invalid");
+      tecnica.classList.remove("is-valid");
+      precio.classList.add("is-invalid");
+      precio.classList.remove("is-valid");
+      estado.classList.add("is-invalid");
+      estado.classList.remove("is-valid");
+      imagen.classList.add("is-invalid");
+      imagen.classList.remove("is-valid");
+      $('#modalError').modal('show'); // Modal Error
+      $('#modalError').on('hidden.bs.modal', function (e) { // Para que al cerrar el modal de error, se abra nuevamente el de formulario
+        $('#formModal').modal('show'); // Modal formulario
+      });
+      return false;
+    } else {
+      nombreObra.classList.add("is-valid");
+      nombreObra.classList.remove("is-invalid");
+      nombreArt.classList.add("is-valid");
+      nombreArt.classList.remove("is-invalid");
+      tecnica.classList.add("is-valid");
+      tecnica.classList.remove("is-invalid");
+      precio.classList.add("is-valid");
+      precio.classList.remove("is-invalid");
+      estado.classList.add("is-valid");
+      estado.classList.remove("is-invalid");
+      imagen.classList.add("is-valid");
+      imagen.classList.remove("is-invalid");
+      return true;
+    }
+  }
 
