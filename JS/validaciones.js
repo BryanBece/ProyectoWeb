@@ -143,5 +143,5 @@ function validarCampos() {
       $('#modalEnvio').modal('show'); // Modal envío
       return true;
     }
-  }
+  } 
 
