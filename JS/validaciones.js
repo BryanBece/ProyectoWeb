@@ -95,6 +95,7 @@ function validarCampos() {
       correo.classList.remove("is-invalid");
       mensaje.classList.add("is-valid");
       mensaje.classList.remove("is-invalid");
+      $('#modalEnvio').modal('show'); // Modal envío
       return true;
     }
   }
@@ -139,6 +140,7 @@ function validarCampos() {
       estado.classList.remove("is-invalid");
       imagen.classList.add("is-valid");
       imagen.classList.remove("is-invalid");
+      $('#modalEnvio').modal('show'); // Modal envío
       return true;
     }
   }
