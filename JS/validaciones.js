@@ -66,24 +66,24 @@ function validarLogin() {
 
 // Validación modal Contacto
 function validarCampos() {
-  var contacto = document.getElementById("envioFormContacto");
-  contacto.addEventListener("button", function (event) {
-    event.preventDefault();
     var nombre = document.getElementById("nombre_contacto");
     var asunto = document.getElementById("asunto_contacto");
     var mensaje = document.getElementById("mensaje_contacto");
     var correo = document.getElementById("correo_contacto");
     var correoVal = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
-    if (nombre.value.length < 3) {
+    if (nombre.value === "") {
       nombre.classList.add("is-invalid");
-      $('#modalError').modal('show');
+      nombre.classList.remove("is-valid");
+      $('#modalError').modal('show'); // Modal Error
+      $('#modalError').on('hidden.bs.modal', function (e) { // Para que al cerrar el modal de error, se abra nuevamente el de formulario
+        $('#modalFormulario').modal('show'); // Modal formulario
+      });
       return false;
     } else {
       nombre.classList.add("is-valid");
+      nombre.classList.remove("is-invalid");
       return true;
     }
+  };
 
-  });
-
-}
