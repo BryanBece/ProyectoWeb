@@ -90,45 +90,56 @@
   </div>
 
   <!-- Modal -->
-  <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal fade" id="modalFormulario" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="contactModalLabel">
+          <h5 class="modal-title" id="modalFormulario">
             Formulario de Contacto
           </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <!-- Formulario de contacto -->
-          <form>
+          <form novalidate action="" method="post" name="envio_contacto" id="envioFormContacto">
             <div class="mb-3">
-              <label for="nameInput" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="nameInput" placeholder="Ingrese su nombre" required />
+              <label for="nombre_contacto" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="nombre_contacto" placeholder="Ingrese su nombre" required />
+              <div class="valid-feedback"></div>
+              <div class="invalid-feedback">
+                El nombre debe ser superior a dos caracteres
+              </div>
             </div>
             <div class="mb-3">
-              <label for="emailInput" class="form-label">Correo electrónico</label>
-              <input type="email" class="form-control" id="emailInput" placeholder="Ingrese su correo electrónico"
+              <label for="correo_contacto" class="form-label">Correo electrónico</label>
+              <input type="email" class="form-control" id="correo_contacto" placeholder="Ingrese su correo electrónico"
                 required />
+              <div class="valid-feedback"></div>
+              <div class="invalid-feedback">Ingrese correo válido</div>
             </div>
             <div class="mb-3">
-              <label for="nameInput" class="form-label">Asunto</label>
-              <input type="text" class="form-control" id="nameInput" placeholder="Ingrese asunto" />
+              <label for="asunto_contacto" class="form-label">Asunto</label>
+              <input type="text" class="form-control" id="asunto_contacto" placeholder="Ingrese asunto" />
+              <div class="valid-feedback"></div>
+              <div class="invalid-feedback">Ingrese Asunto</div>
             </div>
             <div class="mb-3">
-              <label for="messageInput" class="form-label">Mensaje</label>
-              <textarea class="form-control" id="messageInput" rows="3" placeholder="Ingrese su mensaje"
+              <label for="mensaje_contacto" class="form-label">Mensaje</label>
+              <textarea class="form-control" id="mensaje_contacto" rows="3" placeholder="Ingrese su mensaje"
                 required></textarea>
+              <div class="valid-feedback"></div>
+              <div class="invalid-feedback">Ingrese Mensaje</div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Cerrar
+              </button>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1"
+              onclick="validarCampos()">
+                Enviar
+              </button>
             </div>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-            Cerrar
-          </button>
-          <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Enviar
-          </button>
         </div>
       </div>
     </div>
