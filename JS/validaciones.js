@@ -1,6 +1,5 @@
 
-// Validacion suscripción
-
+// Validación suscripción 
 function validarSuscripcion() {
   let suscripcion = document.getElementById("suscribirse");
   let formatoEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -19,9 +18,8 @@ function validarSuscripcion() {
 }
 
 
-// Validaciónes Login
-
-// Validacion correo
+// Validaciones Login
+// Validación correo
 
 function validarCorreo() {
   let correo = document.getElementById("email");
@@ -39,13 +37,11 @@ function validarCorreo() {
   }
 }
 
-// Validacion contraseña
-
+// Validación contraseña
 function validarContrasena() {
   let contrasena = document.getElementById("password");
 
-
-  if (contrasena.value === ""){
+  if (contrasena.value === "") {
     contrasena.classList.add("is-invalid");
     contrasena.classList.remove("is-valid");
     $('#modalError').modal('show');
@@ -57,8 +53,7 @@ function validarContrasena() {
   }
 }
 
-// Validacion Login
-
+// Validación Login
 function validarLogin() {
   if (validarCorreo() && validarContrasena()) {
     alert("Ingreso exitoso.");
@@ -67,4 +62,28 @@ function validarLogin() {
   } else {
     return false;
   }
+}
+
+// Validación modal Contacto
+function validarCampos() {
+  var contacto = document.getElementById("envioFormContacto");
+  contacto.addEventListener("button", function (event) {
+    event.preventDefault();
+    var nombre = document.getElementById("nombre_contacto");
+    var asunto = document.getElementById("asunto_contacto");
+    var mensaje = document.getElementById("mensaje_contacto");
+    var correo = document.getElementById("correo_contacto");
+    var correoVal = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+
+    if (nombre.value.length < 3) {
+      nombre.classList.add("is-invalid");
+      $('#modalError').modal('show');
+      return false;
+    } else {
+      nombre.classList.add("is-valid");
+      return true;
+    }
+
+  });
+
 }
