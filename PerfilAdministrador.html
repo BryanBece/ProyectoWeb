@@ -292,37 +292,49 @@
         <div class="modal-body">
           <img src="Images/PinturaPrueba.jpg" class="d-block w-100" />
           <div class="form-group">
-            <label for="Historia">Historia:</label>
-            <textarea class="form-control" id="Historia" rows="3"
-              placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel feugiat dui, feugiat malesuada magna. Vivamus pretium sapien turpis, a tristique dolor dignissim vel. In tempor ac dolor nec dapibus."
-              disabled></textarea>
-            <label for="Descripción">Descripción:</label>
-            <input type="text" class="form-control" id="ejemploInput" placeholder="Lore Ipsum" disabled />
+          <!--------------------------------------DESDE ESTA LINEA  MODIFICADO---------------------------------->
             <label for="Nombre">Nombre:</label>
             <input type="text" class="form-control" id="ejemploInput" placeholder="Lore Ipsum" disabled />
+
+            <label for="AutorObra">Autor Obra:</label>
+            <input type="text" class="form-control" id="ejemploInput" placeholder="Jose Roman" disabled />
+
+            <label for="Medidas">Medidas:</label>
+            <input type="text" class="form-control" id="ejemploInput" placeholder="100x50" disabled />
+
+            <label for="TécnicaOesTilo">Tecnica o Estilo:</label>
+            <input type="text" class="form-control" id="ejemploInput" placeholder="A manito" disabled />
+
             <label for="Precio">Precio:</label>
             <input type="text" class="form-control" id="ejemploInput" placeholder="$500000" disabled />
-            <label for="Técnica">Estilo:</label>
-            <input type="text" class="form-control" id="ejemploInput" placeholder="A manito" disabled />
-            <label for="Técnica">Estilo:</label>
-            <input type="text" class="form-control" id="ejemploInput" placeholder="100x50" disabled />
-          </div>
 
-          <form>
-            <div class="form-group">
-              <label for="Precio">Estado:</label>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Seleccione opción</option>
-                <option value="1">Aprobada</option>
-                <option value="2">Rechazada</option>
-              </select>
-            </div>
-            <div class="form-group">
+            <label for="Historia">Historia:</label>
+            <textarea class="form-control" id="Historia" rows="3" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel feugiat dui,feugiat malesuada magna. Vivamus pretium sapien turpis, a tristique dolor dignissim vel. In tempor ac dolor nec dapibus." disabled></textarea>
+
+         </div>
+<!-------------------------------------------------------------------------->
+
+            <form novalidate action="" method="post" name="solicPendie" id="solicPendie">
+                <div class="mb-3">
+                  <label for="estadoOp">Estado:</label>
+                  <select class="form-select"  id="selecOption" required >
+                    <option value="">Seleccione opción</option>
+                    <option value="1">Aprobada</option>
+                    <option value="2">Rechazada</option>
+                  </select>
+                  <div class="valid-feedback"> </div>
+                  <div class="invalid-feedback">Seleccione un estado para enviar el formulario</div>
+                </div>
+
+            <div class="mb-3">
               <label for="comentarioTextarea">Comentario:</label>
-              <textarea class="form-control" id="comentarioTextarea" rows="3"></textarea>
+              <textarea class="form-control" id="comentarioTextarea" rows="3" placeholder="Ingrese un comentario sobre el estado de la solicitud." required></textarea>
+              <div class="invalid-feedback">Falta el comentario para enviar.</div>
             </div>
-          </form>
-        </div>
+</form>
+ 
+
+          
 
         <div class="modal-footer">
           <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Enviar</button>
