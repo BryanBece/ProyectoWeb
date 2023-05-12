@@ -208,20 +208,18 @@ function buscarObra(){
 }
 
 //VALIDACION PARA ENVIO (ACEPTACION O RECHAZO) DE SOLICITUD PENDIENTE
-function validarSolicitPend(){
+function validarSolicitPend() {
   var comentario = document.getElementById("comentarioTextarea");
-  var estado = document.getElementById("selecOption");
+  var estado = document.getElementById("estadoOp");
   
-  
-  if (estado.value === "" || comentario.value === ""){
-    
+  if (estado.value === "" || comentario.value === "") {
     estado.classList.add("is-invalid");
     estado.classList.remove("is-valid");
     comentario.classList.add("is-invalid");
     comentario.classList.remove("is-valid");
-    $('#modalError').modal('show'); // Modal Error
-    $('#modalError').on('hidden.bs.modal', function (e) { // Para que al cerrar el modal de error, se abra nuevamente el de formulario
-      $('#formSolicPend').modal('show'); // Modal formulario
+    $('#modalError').modal('show'); // Mostrar modal de error
+    $('#modalError').on('hidden.bs.modal', function (e) {
+      $('#modalStatus').modal('show'); // Mostrar modal de formulario nuevamente al cerrar el modal de error
     });
     return false;
   } else {
@@ -229,8 +227,14 @@ function validarSolicitPend(){
     estado.classList.remove("is-invalid");
     comentario.classList.add("is-valid");
     comentario.classList.remove("is-invalid");
-    $('#modalEnvio').modal('show'); // Modal envío
+
+    if (estado.value === "1") {
+      $('#modalAprobada').modal('show'); // Mostrar modal de solicitud aprobada
+    } else if (estado.value === "2") {
+      $('#modalRechazada').modal('show'); // Mostrar modal de solicitud rechazada
+    }
+
+    $('#modalStatus').modal('hide'); // Cerrar modal de formulario
     return true;
   }
-  
 }
