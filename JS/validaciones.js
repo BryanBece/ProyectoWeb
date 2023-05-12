@@ -145,3 +145,92 @@ function validarCampos() {
     }
   } 
 
+function buscarArtista(){
+      
+  let arrArtista1 = ["Alfredo Smith", "AlfredoSmith.html" ];
+  let arrArtista2 = ["Andres Cox", "AndresCox.html"];
+  let arrArtista3 = ["Laura Hidalgo", "LauraHidalgo.html"];
+  let arrArtista4 = ["Jose Roman", "JoseRoman.html"];
+  let arrArtista5 = ["Camila Martinez", "CamilaMartinez.html"];
+  let arrArtista6 = ["Pedro Machuca", "PedroMachuca.html" ];
+  
+  const arrArtistas = [arrArtista1, arrArtista2, arrArtista3, arrArtista4, arrArtista5, arrArtista6];
+  
+  artistaBuscar = document.getElementById("txtBuscarArtista").value;
+      
+  var mensaje="No se encuentra";
+  for (let i=0; i < arrArtistas.length; i++) {
+      // alert(arrArtistas[i]);
+    if(arrArtistas[i].includes(artistaBuscar)){
+        mensaje = "Se encontro!";
+      if(confirm("Artista encontrado! Quieres visitar su galeria?")){
+        link = arrArtistas[i][1];
+        window.location.href = link;
+      }
+    }
+  }
+alert(mensaje);
+}
+  
+  
+//funcion para validar que la obra buscada se encuentre dentro de la pagina
+/*funcion para validar la busqueda por obra, se crean varios array con las obras ordenadas por artista  y en el indice 0 se agrega el elemento link
+estos array se ingresan a un array para posteriomente usar un for para la busqueda del elemento, una vez encontrado el elemento procede a preguntar si desea 
+ser redirigido a la galeria donde esta la obra y con otro for se busca la posicion equivalente a el link y el usuario es llevado a la galeria donde se encuentra
+la obra*/
+function buscarObra(){
+  
+  let arrObrasAlfredoSmith = ["AlfredoSmith.html", "El entierro de kenny", "Vulva", "Stewie", "SpongeBob"];
+  let arrObrasAndresCox = ["AndresCox.html", "Colour free", "Pubertad", "Interchange", "Iron Gogh", "La jeume fille a la perle", "Old glory", "Vincent Van Gogh night parodia mapa Google"];
+  let arrObrasLauraHidalgo = ["LauraHidalgo.html", "Animales en la carcel", "Dia libre", "Primer beso", "Al acecho", "Chick lit", "Domingo peresozo", "Blues de dia lluvioso", "Mejoras para el hogar", "Retrato por encargo", "Yoga chick: pose de luciernaga", "Rata de gimnacio", "Su majestad", "Pastel del vaca", "Movimiento politico"];
+  let arrObrasJoseRoman = ["JoseRoman.html", "Wild thing", "The wild things", "Whispering to myself", "Embraced #22", "Whispering to myself #1", "The wild thing #2", "Hallowed lady pinching and squeezing kettle"];
+  let arrObrasCamilaMartinez = ["CamilaMartinez.html", "Abstratker bild", "Chaos, numero2", "Composicion VII", "numero 7: edad adulta"];
+  let arrObrasPedroMachuca = ["PedroMachuca.html", "Big C", "Lola home", "Maison en vogue", "Peces en el agua"];
+
+  const arrObras = [arrObrasAlfredoSmith, arrObrasAndresCox, arrObrasLauraHidalgo, arrObrasJoseRoman, arrObrasCamilaMartinez, arrObrasPedroMachuca];
+
+  obraBuscar = document.getElementById("txtBuscarObra").value;
+      
+    
+  var mensaje="No se encuentra";
+  for (let i=0; i < arrObras.length; i++) {
+    if(arrObras[i].includes(obraBuscar)){
+      mensaje = "Se encontro!";
+      if(confirm("Obra encontrada! Quieres visitar su galeria?")){
+        link = arrObras[i][0];
+        window.location.href = link;
+      }
+    }
+  }
+  alert(mensaje);
+  
+    
+}
+
+//VALIDACION PARA ENVIO (ACEPTACION O RECHAZO) DE SOLICITUD PENDIENTE
+function validarSolicitPend(){
+  var comentario = document.getElementById("comentarioTextarea");
+  var estado = document.getElementById("selecOption");
+  
+  
+  if (estado.value === "" || comentario.value === ""){
+    
+    estado.classList.add("is-invalid");
+    estado.classList.remove("is-valid");
+    comentario.classList.add("is-invalid");
+    comentario.classList.remove("is-valid");
+    $('#modalError').modal('show'); // Modal Error
+    $('#modalError').on('hidden.bs.modal', function (e) { // Para que al cerrar el modal de error, se abra nuevamente el de formulario
+      $('#formSolicPend').modal('show'); // Modal formulario
+    });
+    return false;
+  } else {
+    estado.classList.add("is-valid");
+    estado.classList.remove("is-invalid");
+    comentario.classList.add("is-valid");
+    comentario.classList.remove("is-invalid");
+    $('#modalEnvio').modal('show'); // Modal envío
+    return true;
+  }
+  
+}
