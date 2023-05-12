@@ -74,17 +74,21 @@
       <form>
         <div class="mb-3">
           <label for="busquedaInput" class="form-label">Buscar por artista</label>
-          <input type="text" class="form-control" id="busquedaInput" placeholder="Ingrese nombre de artista" />
-        </div>
-        <button type="submit" class="btn btn-outline-success">Buscar</button>
+          <!------------------------modificado----------------------->
+<input type="text" class="form-control" id="txtBuscarArtista" placeholder="Ingrese nombre de artista" />
+</div>
+<!--------------------------------BOTON BUSCAR ARTISTA------------------------------------------------->
+<button type="button" class="btn btn-outline-success" name="btnBuscarArtista"  id="btnBuscarArtista"  onclick="buscarArtista()">Buscar</button>
       </form>
       <br />
       <form>
         <div class="mb-3">
           <label for="busquedaInput" class="form-label">Buscar por obra</label>
-          <input type="text" class="form-control" id="busquedaInput" placeholder="Ingrese nombre de la obra" />
-        </div>
-        <button type="submit" class="btn btn-outline-success">Buscar</button>
+          <!-----------------------------------linea que cambia ---------------------------------->
+<input type="text" class="form-control" id="txtBuscarObra" placeholder="Ingrese nombre de la obra"/>
+</div>
+<!------------------------------------BOTON BUSCAR POR OBRA ------LINEA QUE CAMBIA------->
+<button type="button" class="btn btn-outline-success" name="btnBuscarObra" id="btnBuscarObra" onclick="buscarObra()" >Buscar</button>
       </form>
     </div>
   </div>
