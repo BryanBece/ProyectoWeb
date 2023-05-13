@@ -48,6 +48,10 @@
             <a class="nav-link" id="mensaje" aria-current="page" data-bs-toggle="modal"
               data-bs-target="#mesagModal">Mensajes</a>
           </li>
+          <li class="nav-item" id="ItemNavBar">
+            <a class="nav-link" id="mensaje" aria-current="page" data-bs-toggle="modal"
+              data-bs-target="#modalRegistrarArtista">Registrar Artista</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" aria-current="page">Conectado/a como Administrador</a>
           </li>
@@ -231,6 +235,52 @@
       </tbody>
     </table>
   </div>
+  <!-- Modal Registro Artista -->
+
+  <div class="modal fade" id="modalRegistrarArtista" tabindex="-1" aria-labelledby="exampleModalLabelRegistrarArtista" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabelRegistrarArtista">Registrar Artista</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formRegistrarArtista" novalidate>
+            <div class="mb-3">
+              <label for="nombres">Nombres:</label>
+              <input type="text" class="form-control" id="nombres" required>
+              <div class="invalid-feedback">Por favor, ingresa el nombre.</div>
+            </div>
+            <div class="mb-3">
+              <label for="apellidos">Apellidos:</label>
+              <input type="text" class="form-control" id="apellidos" required>
+              <div class="invalid-feedback">Por favor, ingresa los apellidos.</div>
+            </div>
+            <div class="mb-3">
+              <label for="correo">Correo:</label>
+              <input type="email" class="form-control" id="correo" required>
+              <div class="invalid-feedback">Por favor, ingresa un correo válido.</div>
+            </div>
+            <div class="mb-3">
+              <label for="contrasena">Contraseña:</label>
+              <input type="password" class="form-control" id="contrasena" required>
+              <div class="invalid-feedback">Por favor, ingresa una contraseña.</div>
+            </div>
+            <div class="mb-3">
+              <label for="descripcion">Descripción:</label>
+              <textarea class="form-control" id="descripcion" rows="3" required></textarea>
+              <div class="invalid-feedback">Por favor, ingresa una descripción.</div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark" onclick="validarRegistroArtista()">Registrar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <!-- Modal Perfil -->
 
@@ -341,6 +391,50 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal Registro Exitoso -->
+
+  <div class="modal fade" id="modalRegistroExitoso" tabindex="-1" aria-labelledby="exampleModalLabelRegistroExitoso" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabelRegistroExitoso">Registro Exitoso</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Se ha registrado correctamente.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal Error Formulario -->
+  <div class="modal fade" id="modalErrorFormulario" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalError">
+            Error.
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="mensajeError"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 
     <!-- Modal Error datos -->
 

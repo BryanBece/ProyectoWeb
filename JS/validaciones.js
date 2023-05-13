@@ -56,7 +56,6 @@ function validarContrasena() {
 // Validación Login
 function validarLogin() {
   if (validarCorreo() && validarContrasena()) {
-    alert("Ingreso exitoso.");
     $('#modalPerfiles').modal('show'); // Va el ID del modal
     return true;
   } else {
@@ -66,84 +65,139 @@ function validarLogin() {
 
 // Validación modal Contacto
 function validarCampos() {
-    var nombre = document.getElementById("nombre_contacto");
-    var asunto = document.getElementById("asunto_contacto");
-    var mensaje = document.getElementById("mensaje_contacto");
-    var correo = document.getElementById("correo_contacto");
-    var correoVal = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+  let nombre = document.getElementById("nombre_contacto");
+  let asunto = document.getElementById("asunto_contacto");
+  let mensaje = document.getElementById("mensaje_contacto");
+  let correo = document.getElementById("correo_contacto");
+  let correoVal = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
-    if (nombre.value === "" || asunto.value === "" || !correoVal.test(correo.value) || mensaje.value === "") {
-      nombre.classList.add("is-invalid");
-      nombre.classList.remove("is-valid");
-      asunto.classList.remove("is-valid");
-      asunto.classList.add("is-invalid");
-      correo.classList.remove("is-valid");
-      correo.classList.add("is-invalid");
-      mensaje.classList.remove("is-valid");
-      mensaje.classList.add("is-invalid");
-      $('#modalError').modal('show'); // Modal Error
-      $('#modalError').on('hidden.bs.modal', function (e) { // Para que al cerrar el modal de error, se abra nuevamente el de formulario
-        $('#modalFormulario').modal('show'); // Modal formulario
-      });
-      return false;
-    } else {
-      nombre.classList.add("is-valid");
-      nombre.classList.remove("is-invalid");
-      asunto.classList.add("is-valid");
-      asunto.classList.remove("is-invalid");
-      correo.classList.add("is-valid");
-      correo.classList.remove("is-invalid");
-      mensaje.classList.add("is-valid");
-      mensaje.classList.remove("is-invalid");
-      $('#modalEnvio').modal('show'); // Modal envío
-      return true;
-    }
+  let camposFaltantes = [];
+
+  if (nombre.value === "") {
+    nombre.classList.add("is-invalid");
+    camposFaltantes.push("Nombre");
+  } else {
+    nombre.classList.remove("is-invalid");
   }
 
-  function validarCamposArt(){
-    var nombreObra = document.getElementById("nameObra");
-    var nombreArt = document.getElementById("nameArt");
-    var tecnica = document.getElementById("tecnica");
-    var precio = document.getElementById("precio");
-    var estado = document.getElementById("estado");
-    var imagen = document.getElementById("imagen");
+  if (asunto.value === "") {
+    asunto.classList.add("is-invalid");
+    camposFaltantes.push("Asunto");
+  } else {
+    asunto.classList.remove("is-invalid");
+  }
 
-    if (nombreObra.value === "" || nombreArt.value === "" || tecnica.value === "" || precio.value === "" || 
-    estado.value === "" || imagen.value === "" ) {
-      nombreObra.classList.add("is-invalid");
-      nombreObra.classList.remove("is-valid");
-      nombreArt.classList.add("is-invalid");
-      nombreArt.classList.remove("is-valid");
-      tecnica.classList.add("is-invalid");
-      tecnica.classList.remove("is-valid");
-      precio.classList.add("is-invalid");
-      precio.classList.remove("is-valid");
-      estado.classList.add("is-invalid");
-      estado.classList.remove("is-valid");
-      imagen.classList.add("is-invalid");
-      imagen.classList.remove("is-valid");
-      $('#modalError').modal('show'); // Modal Error
-      $('#modalError').on('hidden.bs.modal', function (e) { // Para que al cerrar el modal de error, se abra nuevamente el de formulario
-        $('#formModal').modal('show'); // Modal formulario
-      });
-      return false;
-    } else {
-      nombreObra.classList.add("is-valid");
-      nombreObra.classList.remove("is-invalid");
-      nombreArt.classList.add("is-valid");
-      nombreArt.classList.remove("is-invalid");
-      tecnica.classList.add("is-valid");
-      tecnica.classList.remove("is-invalid");
-      precio.classList.add("is-valid");
-      precio.classList.remove("is-invalid");
-      estado.classList.add("is-valid");
-      estado.classList.remove("is-invalid");
-      imagen.classList.add("is-valid");
-      imagen.classList.remove("is-invalid");
-      $('#modalEnvio').modal('show'); // Modal envío
-      return true;
-    }
-  } 
+  if (!correoVal.test(correo.value)) {
+    correo.classList.add("is-invalid");
+    camposFaltantes.push("Correo");
+  } else {
+    correo.classList.remove("is-invalid");
+  }
+
+  if (mensaje.value === "") {
+    mensaje.classList.add("is-invalid");
+    camposFaltantes.push("Mensaje");
+  } else {
+    mensaje.classList.remove("is-invalid");
+  }
+
+  if (camposFaltantes.length > 0) {
+    $('#modalError').modal('show'); // Modal Error
+    $('#modalError').on('hidden.bs.modal', function (e) { // Para que al cerrar el modal de error, se abra nuevamente el de formulario
+    $('#modalFormulario').modal('show'); // Modal formulario
+    });
+    return false;
+  } else {
+    nombre.classList.add("is-valid");
+    nombre.classList.remove("is-invalid");
+    asunto.classList.add("is-valid");
+    asunto.classList.remove("is-invalid");
+    correo.classList.add("is-valid");
+    correo.classList.remove("is-invalid");
+    mensaje.classList.add("is-valid");
+    mensaje.classList.remove("is-invalid");
+    $('#modalEnvio').modal('show'); // Modal envío
+    return true;
+  }
+}
+
+function validarCamposArt() {
+  let nombreObra = document.getElementById("nameObra");
+  let nombreArt = document.getElementById("nameArt");
+  let tecnica = document.getElementById("tecnica");
+  let precio = document.getElementById("precio");
+  let estado = document.getElementById("estado");
+  let imagen = document.getElementById("imagen");
+
+  let camposFaltantes = [];
+
+  if (nombreObra.value === "") {
+    nombreObra.classList.add("is-invalid");
+    camposFaltantes.push("Nombre de la obra");
+  } else {
+    nombreObra.classList.remove("is-invalid");
+  }
+
+  if (nombreArt.value === "") {
+    nombreArt.classList.add("is-invalid");
+    camposFaltantes.push("Nombre del artista");
+  } else {
+    nombreArt.classList.remove("is-invalid");
+  }
+
+  if (tecnica.value === "") {
+    tecnica.classList.add("is-invalid");
+    camposFaltantes.push("Técnica");
+  } else {
+    tecnica.classList.remove("is-invalid");
+  }
+
+  if (precio.value === "") {
+    precio.classList.add("is-invalid");
+    camposFaltantes.push("Precio");
+  } else {
+    precio.classList.remove("is-invalid");
+  }
+
+  if (estado.value === "") {
+    estado.classList.add("is-invalid");
+    camposFaltantes.push("Estado");
+  } else {
+    estado.classList.remove("is-invalid");
+  }
+
+  if (imagen.value === "") {
+    imagen.classList.add("is-invalid");
+    camposFaltantes.push("Imagen");
+  } else {
+    imagen.classList.remove("is-invalid");
+  }
+
+  if (camposFaltantes.length > 0) {
+    $('#modalError').modal('show'); // Modal Error
+    $('#modalError').on('hidden.bs.modal', function (e) { // Para que al cerrar el modal de error, se abra nuevamente el de formulario
+    $('#modalFormulario').modal('show'); // Modal formulario
+    });
+    return false;
+  } else {
+    nombreObra.classList.add("is-valid");
+    nombreObra.classList.remove("is-invalid");
+    nombreArt.classList.add("is-valid");
+    nombreArt.classList.remove("is-invalid");
+    tecnica.classList.add("is-valid");
+    tecnica.classList.remove("is-invalid");
+    precio.classList.add("is-valid");
+    precio.classList.remove("is-invalid");
+    estado.classList.add("is-valid");
+    estado.classList.remove("is-invalid");
+    imagen.classList.add("is-valid");
+    imagen.classList.remove("is-invalid");
+    $('#modalEnvio').modal('show'); // Modal envío
+    return true;
+  }
+}
+
+
 
 function buscarArtista(){
       
@@ -238,3 +292,61 @@ function validarSolicitPend() {
     return true;
   }
 }
+
+// Validación registro artista.
+function validarRegistroArtista() {
+  let nombres = document.getElementById("nombres");
+  let apellidos = document.getElementById("apellidos");
+  let correo = document.getElementById("correo");
+  let contrasena = document.getElementById("contrasena");
+  let descripcion = document.getElementById("descripcion");
+
+  let camposFaltantes = [];
+
+  if (nombres.value === "") {
+    nombres.classList.add("is-invalid");
+    camposFaltantes.push("Nombres");
+  } else {
+    nombres.classList.remove("is-invalid");
+  }
+
+  if (apellidos.value === "") {
+    apellidos.classList.add("is-invalid");
+    camposFaltantes.push("Apellidos");
+  } else {
+    apellidos.classList.remove("is-invalid");
+  }
+
+  if (correo.value === "") {
+    correo.classList.add("is-invalid");
+    camposFaltantes.push("Correo");
+  } else {
+    correo.classList.remove("is-invalid");
+  }
+
+  if (contrasena.value === "") {
+    contrasena.classList.add("is-invalid");
+    camposFaltantes.push("Contraseña");
+  } else {
+    contrasena.classList.remove("is-invalid");
+  }
+
+  if (descripcion.value === "") {
+    descripcion.classList.add("is-invalid");
+    camposFaltantes.push("Descripción");
+  } else {
+    descripcion.classList.remove("is-invalid");
+  }
+
+  if (camposFaltantes.length > 0) {
+    let mensajeError = "Falta completar los siguientes campos: " + camposFaltantes.join(", ");
+    document.getElementById("mensajeError").textContent = mensajeError;
+    return false;
+  } else {
+    $('#modalRegistroExitoso').modal('show'); 
+    $('#modalRegistrarArtista').modal('hide'); 
+    return true;
+  }
+}
+
+
