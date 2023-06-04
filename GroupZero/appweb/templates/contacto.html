@@ -1,0 +1,19 @@
+{% load crispy_forms_tags %}
+
+<div class="modal fade" {% block modal-id %} id="modalFormulario" {% endblock modal-id %} tabindex="-1" aria-labelledby="FormularioModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="FormularioModalLabel">Contacto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formularioContacto" method="post" action="">
+          {% csrf_token %}
+         {{ form | crispy }} 
+          <button type="submit" class="btn btn-dark">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

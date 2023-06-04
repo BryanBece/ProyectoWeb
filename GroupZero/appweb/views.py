@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .models import *
+from .forms import *
 
 # Create your views here.
 
@@ -37,3 +39,18 @@ def perfilArtista (request):
 
 def perfilAdmin (request):
     return render(request, 'PerfilAdministrador.html')
+
+def contacto (request):
+    data = {
+        'form': ContactoForm() 
+    }
+    if request.method == 'POST':
+        formulario = ContactoForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            data['mensaje'] = "Contacto guardado"
+        else:
+            data['mensaje'] = "Ha ocurrido un error"
+            data["form"] = formulario
+
+    return render(request, 'contacto.html', data)

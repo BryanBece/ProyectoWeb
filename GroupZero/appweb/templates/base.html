@@ -21,8 +21,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css" />
   {% load static %}
   <script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
-    <script src="{% static 'js/validaciones.js' %}"></script>
-
+  <script src="{% static 'js/validaciones.js' %}"></script>
+  {% load crispy_forms_tags %}
   {% block titulo %}
   <title></title>
   {% endblock %}
@@ -56,6 +56,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'login' %}">Acceder</a>
           </li>
+
+          <!-- === INCLUDE === -->
+          {% include 'contacto.html' %}
           <li class="nav-item">
             <a class="nav-link" id="Contacto" aria-current="page" data-bs-toggle="modal"
               data-bs-target="#modalFormulario">Contacto</a>
@@ -79,89 +82,47 @@
         <div class="mb-3">
           <label for="busquedaInput" class="form-label">Buscar por artista</label>
           <!------------------------modificado----------------------->
-<input type="text" class="form-control" id="txtBuscarArtista" placeholder="Ingrese nombre de artista" />
-</div>
-<!--------------------------------BOTON BUSCAR ARTISTA------------------------------------------------->
-<button type="button" class="btn btn-outline-success" name="btnBuscarArtista"  id="btnBuscarArtista"  onclick="buscarArtista()">Buscar</button>
+          <input type="text" class="form-control" id="txtBuscarArtista" placeholder="Ingrese nombre de artista" />
+        </div>
+        <!--------------------------------BOTON BUSCAR ARTISTA------------------------------------------------->
+        <button type="button" class="btn btn-outline-success" name="btnBuscarArtista" id="btnBuscarArtista"
+          onclick="buscarArtista()">Buscar</button>
       </form>
       <br />
       <form>
         <div class="mb-3">
           <label for="busquedaInput" class="form-label">Buscar por obra</label>
           <!-----------------------------------linea que cambia ---------------------------------->
-<input type="text" class="form-control" id="txtBuscarObra" placeholder="Ingrese nombre de la obra"/>
-</div>
-<!------------------------------------BOTON BUSCAR POR OBRA ------LINEA QUE CAMBIA------->
-<button type="button" class="btn btn-outline-success" name="btnBuscarObra" id="btnBuscarObra" onclick="buscarObra()" >Buscar</button>
+          <input type="text" class="form-control" id="txtBuscarObra" placeholder="Ingrese nombre de la obra" />
+        </div>
+        <!------------------------------------BOTON BUSCAR POR OBRA ------LINEA QUE CAMBIA------->
+        <button type="button" class="btn btn-outline-success" name="btnBuscarObra" id="btnBuscarObra"
+          onclick="buscarObra()">Buscar</button>
       </form>
     </div>
   </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="modalFormulario" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+  <!-- === BLOCK CONTENT === -->
+  {% block contenido %} {% endblock %}
+
+
+
+  </main>
+
+  <!-- Modal Error datos -->
+
+  <div class="modal fade" id="modalError" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalFormulario">
-            Formulario de Contacto
+          <h5 class="modal-title" id="modalError">
+            Error.
           </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <!-- Formulario de contacto -->
-          <form novalidate action="" method="post" name="envio_contacto" id="envioFormContacto">
-            <div class="mb-3">
-              <label for="nombre_contacto" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="nombre_contacto" placeholder="Ingrese su nombre" required />
-              <div class="valid-feedback"></div>
-              <div class="invalid-feedback">
-                El nombre debe ser superior a dos caracteres
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="correo_contacto" class="form-label">Correo electrónico</label>
-              <input type="email" class="form-control" id="correo_contacto" placeholder="Ingrese su correo electrónico"
-                required />
-              <div class="valid-feedback"></div>
-              <div class="invalid-feedback">Ingrese correo válido</div>
-            </div>
-            <div class="mb-3">
-              <label for="asunto_contacto" class="form-label">Asunto</label>
-              <input type="text" class="form-control" id="asunto_contacto" placeholder="Ingrese asunto" />
-              <div class="valid-feedback"></div>
-              <div class="invalid-feedback">Ingrese Asunto</div>
-            </div>
-            <div class="mb-3">
-              <label for="mensaje_contacto" class="form-label">Mensaje</label>
-              <textarea class="form-control" id="mensaje_contacto" rows="3" placeholder="Ingrese su mensaje"
-                required></textarea>
-              <div class="valid-feedback"></div>
-              <div class="invalid-feedback">Ingrese Mensaje</div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                Cerrar
-              </button>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1"
-              onclick="validarCampos()">
-                Enviar
-              </button>
-            </div>
-          </form>
+          <p>Faltan datos por completar.</p>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="modalEnvio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">
-            ¡Enviado con éxito!
-          </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">Tu mensaje ha sido enviado con éxito.</div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             Cerrar
@@ -171,89 +132,57 @@
     </div>
   </div>
 
-  <main>
 
-    {% block contenido %}
-    
-    {% endblock %}
 
-  </main>
+  <!-- Footer -->
 
-    <!-- Modal Error datos -->
+  <footer class="bg-light text-center">
+    <div class="container p-4">
+      <section class="mb-4">
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"><i
+            class="bi bi-facebook"></i></a>
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"><i
+            class="bi bi-twitter"></i></a>
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"><i
+            class="bi bi-google"></i></a>
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"><i
+            class="bi bi-instagram"></i></a>
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"><i
+            class="bi bi-linkedin"></i></a>
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"><i
+            class="bi bi-youtube"></i></a>
+      </section>
 
-    <div class="modal fade" id="modalError" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalError">
-                Error.
-              </h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <section class="">
+        <form action="">
+          <div class="row d-flex justify-content-center">
+            <div class="col-auto">
+              <p class="pt-2">
+                <strong>Suscríbete a nuestro boletín de noticias:</strong>
+              </p>
             </div>
-            <div class="modal-body">
-              <p>Faltan datos por completar.</p>
+
+            <div class="col-md-5 col-12">
+              <div class="form-outline mb-4">
+                <input type="email" id="suscribirse" class="form-control" placeholder="Ingrese correo electrónico" />
+                <label class="form-label" for="form5Example2">Correo electrónico</label>
+              </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                Cerrar
+
+            <div class="col-auto">
+              <button type="button" class="btn btn-dark mb-4">
+                Suscribirse
               </button>
             </div>
           </div>
-        </div>
-      </div>
-      
-    
-    
-      <!-- Footer -->
-    
-      <footer class="bg-light text-center">
-        <div class="container p-4">
-          <section class="mb-4">
-            <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"><i
-                class="bi bi-facebook"></i></a>
-            <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"><i
-                class="bi bi-twitter"></i></a>
-            <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"><i
-                class="bi bi-google"></i></a>
-            <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"><i
-                class="bi bi-instagram"></i></a>
-            <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"><i
-                class="bi bi-linkedin"></i></a>
-            <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"><i
-                class="bi bi-youtube"></i></a>
-          </section>
-    
-          <section class="">
-            <form action="">
-              <div class="row d-flex justify-content-center">
-                <div class="col-auto">
-                  <p class="pt-2">
-                    <strong>Suscríbete a nuestro boletín de noticias:</strong>
-                  </p>
-                </div>
-    
-                <div class="col-md-5 col-12">
-                  <div class="form-outline mb-4">
-                    <input type="email" id="suscribirse" class="form-control" placeholder="Ingrese correo electrónico" />
-                    <label class="form-label" for="form5Example2">Correo electrónico</label>
-                  </div>
-                </div>
-    
-                <div class="col-auto">
-                  <button type="button" class="btn btn-dark mb-4" onclick="validarSuscripcion()">
-                    Suscribirse
-                  </button>
-                </div>
-              </div>
-            </form>
-          </section>
-        </div>
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-          © 2023 Derechos de autor:
-          <a class="text-dark" href="#">GroundZero</a>
-        </div>
-      </footer>
-    </body>
-    
-    </html>
-    
+        </form>
+      </section>
+    </div>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+      © 2023 Derechos de autor:
+      <a class="text-dark" href="#">GroundZero</a>
+    </div>
+  </footer>
+</body>
+
+</html>
