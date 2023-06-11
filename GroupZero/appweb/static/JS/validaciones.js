@@ -1,24 +1,24 @@
 
-// Validación suscripción 
-function validarSuscripcion() {
-  let suscripcion = document.getElementById("suscribirse");
-  let formatoEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+// Validar suscripcion
 
-  if (suscripcion.value === "" || !formatoEmail.test(suscripcion.value)) {
-    suscripcion.classList.add("is-invalid");
-    suscripcion.classList.remove("is-valid");
-    $('#modalError').modal('show');
-    return false;
+function validarSuscripcion() {
+  var correo = document.getElementById("suscribirse").value;
+  if (correo == "") {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Ingrese un correo electrónico',
+    })
   } else {
-    suscripcion.classList.add("is-valid");
-    suscripcion.classList.remove("is-invalid");
-    alert("Gracias por suscribirte.");
-    return true;
+    Swal.fire({
+      icon: 'success',
+      title: '¡Gracias por suscribirse!',
+      text: 'Recibirá las últimas noticias de nuestros artistas',
+    })
   }
 }
 
 
-// Validaciones Login
 // Validación correo
 
 function validarCorreo() {

@@ -8,4 +8,4 @@ from crispy_forms.layout import Submit
 class ContactoForm(forms.ModelForm):
     class Meta:
         model = Contacto
-        fields = "__all__"
+        fields = "__all__"  

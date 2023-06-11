@@ -1,56 +1,57 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from .forms import *
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
-def home (request):
-    return render(request, 'home.html')
+def home(request):
+    dataFormulario = {
+        'form': ContactoForm
+    }  
+    return render(request, 'home.html', dataFormulario)
 
-def nosotros (request):
-    return render(request, 'nosotros.html')
+def nosotros(request):
+    dataFormulario = {
+        'form': ContactoForm
+    }
 
-def galeria (request):
-    return render(request, 'galeria.html')
+    return render(request, 'nosotros.html', dataFormulario)
 
-def login (request):
-    return render(request, 'login.html')
+def galeria(request):
+    dataFormulario = {
+        'form': ContactoForm
+    }
+    return render(request, 'galeria.html', dataFormulario)
 
-def artista1 (request):
-    return render(request, 'alfredoSmith.html')
+def login(request):
+    dataFormulario = {
+        'form': ContactoForm
+    }
 
-def artista2 (request):
-    return render(request, 'andresCox.html')
+    return render(request, 'login.html', dataFormulario)
 
-def artista3 (request):
-    return render(request, 'camilaMartinez.html')
+# Falta crear la vista de artista y reemplazar esta
 
-def artista4 (request):
-    return render(request, 'joseRoman.html')
+def artista1(request):
+    return render(request, 'artista1.html')
 
-def artista5 (request):
-    return render(request, 'lauraHidalgo.html')
+# ------------------------------
 
-def artista6 (request):
-    return render(request, 'pedroMachuca.html')
-
-def perfilArtista (request):
-    return render(request, 'PerfilArtista.html')
-
-def perfilAdmin (request):
-    return render(request, 'PerfilAdministrador.html')
-
-def contacto (request):
-    data = {
-        'form': ContactoForm() 
+def contacto(request):
+    dataFormulario = {
+        'form': ContactoForm
     }
     if request.method == 'POST':
         formulario = ContactoForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
-            data['mensaje'] = "Contacto guardado"
+            messages.success(request, "Mensaje enviado")
+            return redirect(request.META.get('HTTP_REFERER', 'home'))
         else:
-            data['mensaje'] = "Ha ocurrido un error"
-            data["form"] = formulario
+            dataFormulario["form"] = formulario
+            messages.error(request, "Error al enviar el mensaje")
 
-    return render(request, 'contacto.html', data)
+
+    return render(request, 'contacto.html', dataFormulario)
