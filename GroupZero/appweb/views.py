@@ -25,13 +25,6 @@ def galeria(request):
     }
     return render(request, 'galeria.html', dataFormulario)
 
-def login(request):
-    dataFormulario = {
-        'form': ContactoForm
-    }
-
-    return render(request, 'login.html', dataFormulario)
-
 # Falta crear la vista de artista y reemplazar esta
 
 def artista1(request):
@@ -55,3 +48,12 @@ def contacto(request):
 
 
     return render(request, 'contacto.html', dataFormulario)
+
+
+def login_usuario(request):
+    dataFormulario = {
+        'form': ContactoForm
+    }
+
+    messages.success(request, f"Bienvenido {request.user.username}")
+    return redirect('home')
