@@ -17,3 +17,13 @@ class Contacto(models.Model):
     
     def __str__(self):
         return self.nombre
+    
+class Artista(models.Model):
+    nombre = models.CharField(max_length=50)
+    apellido = models.CharField(max_length=50)
+    descripcion = models.TextField()
+    estilo = models.CharField(max_length=50)
+    foto = models.ImageField(upload_to='artistas', null=True, blank=True)
+    
+    def __str__(self):
+        return self.nombre

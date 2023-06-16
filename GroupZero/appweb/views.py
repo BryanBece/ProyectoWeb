@@ -21,9 +21,17 @@ def nosotros(request):
 
 def galeria(request):
     dataFormulario = {
-        'form': ContactoForm
+        'form': ContactoForm()
     }
-    return render(request, 'galeria.html', dataFormulario)
+
+    Artistas = Artista.objects.all()
+
+    data = {
+        'form': dataFormulario['form'],
+        'Artistas': Artistas
+    }
+
+    return render(request, 'galeria.html', data)
 
 # Falta crear la vista de artista y reemplazar esta
 
@@ -34,7 +42,7 @@ def artista1(request):
 
 def contacto(request):
     dataFormulario = {
-        'form': ContactoForm
+        'form': ContactoForm()
     }
     if request.method == 'POST':
         formulario = ContactoForm(data=request.POST)
@@ -45,7 +53,7 @@ def contacto(request):
         else:
             dataFormulario["form"] = formulario
             messages.error(request, "Error al enviar el mensaje")
-
+            dataFormulario["form"] = ContactoForm()
 
     return render(request, 'contacto.html', dataFormulario)
 
