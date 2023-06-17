@@ -24,6 +24,11 @@ class Artista(models.Model):
     descripcion = models.TextField()
     estilo = models.CharField(max_length=50)
     foto = models.ImageField(upload_to='artistas', null=True, blank=True)
+    #user
     
     def __str__(self):
         return self.nombre
+
+#class Categoria(models)
+        
+#class Obra
