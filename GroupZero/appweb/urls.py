@@ -9,4 +9,5 @@ urlpatterns = [
     path('login_usuario/', login_usuario, name="login_usuario"),
     path('alfredoSmith/', artista1, name="artista1"),
     path('contacto/', contacto, name="contacto"),
+    path('registro_user/', registro_user, name="reg_user"),
 ]
