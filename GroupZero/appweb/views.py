@@ -73,7 +73,9 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 
 def registro_user(request):
-    data = {"mensaje": ""}
+    dataFormulario = {
+        'form': ContactoForm
+    }
     
     if request.method == "POST":
         nombre = request.POST.get("nombre")
@@ -95,7 +97,7 @@ def registro_user(request):
             usu.username = nombre
             usu.first_name = nombre
             usu.last_name = apellido
-            grupo = Group.objects.get(name="Usuario")
+            grupo = Group.objects.get(name="Usuario") # Cambiar a Artista si se quiere crear un artista
             
             try:
                 usu.save()
@@ -110,4 +112,4 @@ def registro_user(request):
                 messages.error(request, "Error al crear el usuario.")
                 print("Error al crear el usuario.")
     
-    return render(request, "registration/registroUser.html", data)
+    return render(request, "registration/registroUser.html", dataFormulario) # Cambiar a registroArtista.html si se quiere crear un artista
