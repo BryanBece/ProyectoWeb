@@ -4,7 +4,7 @@ from .forms import *
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-
+from django.urls import reverse
 
 # Create your views here.
 
@@ -68,9 +68,6 @@ def login_usuario(request):
     messages.success(request, f"Bienvenido {request.user.username}")
     return redirect('home')
 
-from django.contrib import messages
-from django.shortcuts import redirect, render
-from django.urls import reverse
 
 def registro_user(request):
     dataFormulario = {
@@ -102,11 +99,8 @@ def registro_user(request):
             try:
                 usu.save()
                 usu.groups.add(grupo)
-                user = authenticate(username=usu.username, password=password1)
-                login(request, user)
-                
                 messages.success(request, "Usuario creado correctamente.")
-                
+                print("Usuario creado correctamente.")
                 return redirect(reverse("home"))
             except:
                 messages.error(request, "Error al crear el usuario.")
