@@ -3,9 +3,9 @@ from django.db import models
 # Create your models here.
 
 list_tipo_contacto = [
-    (0, 'Sugerencia'),
-    (1, 'Reclamo'),
-    (2, 'Felicitaciones'),
+    (0, 'Creado'),
+    (1, 'Aprobado'),
+    (2, 'Rechazado'),
 ]
 
 class Contacto(models.Model):
@@ -14,6 +14,8 @@ class Contacto(models.Model):
     telefono = models.IntegerField()
     tipo_contacto = models.IntegerField(choices=list_tipo_contacto)
     mensaje = models.TextField()
+    #estado= models.TextField(Default= creado)
+    #aprobado = models.BooleanField(default=False)
     
     def __str__(self):
         return self.nombre

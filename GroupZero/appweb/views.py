@@ -107,3 +107,7 @@ def registro_user(request):
                 print("Error al crear el usuario.")
     
     return render(request, "registration/registroUser.html", dataFormulario) # Cambiar a registroArtista.html si se quiere crear un artista
+
+
+def perfilArtista(request):
+    return render(request, 'perfilArtista.html')
