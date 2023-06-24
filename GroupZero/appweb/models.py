@@ -31,6 +31,36 @@ class Artista(models.Model):
     def __str__(self):
         return self.nombre
 
+list_estado_obra = [
+    (0,'Disponible'),
+    (1,'Vendida'),
+    (2,'En Exhibición')
+]
+
+class FormularioArt(models.Model):
+    nombreObra = models.CharField(max_length=50)
+    autor = models.CharField(max_length=50)
+    medidas = models.CharField(max_length=20)
+    tecnica = models.CharField(max_length=50)
+    precio = models.IntegerField()
+    estado = models.IntegerField(choices=list_estado_obra)
+    imagenObra = models.ImageField(upload_to=None)
+    historia = models.TextField(null=True,blank=True)
+
+    def __str__(self):
+        return self.nombreObra
+
 #class Categoria(models)
         
-#class Obra
+class Obra(models.Model):
+    nombreObra = models.CharField(max_length=50)
+    autor = models.ForeignKey(Artista, on_delete=models.PROTECT)
+    medidas = models.CharField(max_length=20)
+    tecnica = models.CharField(max_length=50)
+    precio = models.IntegerField()
+    estado = models.IntegerField(choices=list_estado_obra)
+    imagenObra = models.ImageField(upload_to=None)
+    historia = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return self.nombreObra
