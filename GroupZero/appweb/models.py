@@ -44,7 +44,7 @@ class FormularioArt(models.Model):
     tecnica = models.CharField(max_length=50)
     precio = models.IntegerField()
     estado = models.IntegerField(choices=list_estado_obra)
-    imagenObra = models.ImageField(upload_to=None)
+    imagenObra = models.ImageField(upload_to='obras')
     historia = models.TextField(null=True,blank=True)
 
     def __str__(self):
@@ -59,7 +59,7 @@ class Obra(models.Model):
     tecnica = models.CharField(max_length=50)
     precio = models.IntegerField()
     estado = models.IntegerField(choices=list_estado_obra)
-    imagenObra = models.ImageField(upload_to=None)
+    imagenObra = models.ImageField(upload_to='obras')
     historia = models.TextField(null=True, blank=True)
 
     def __str__(self):
