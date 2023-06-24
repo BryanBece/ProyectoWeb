@@ -3,9 +3,9 @@ from django.db import models
 # Create your models here.
 
 list_tipo_contacto = [
-    (0, 'Creado'),
-    (1, 'Aprobado'),
-    (2, 'Rechazado'),
+    (0, 'Sugerencia'),
+    (1, 'Reclamo'),
+    (2, 'Felicitaciones'),
 ]
 
 class Contacto(models.Model):

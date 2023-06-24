@@ -21,7 +21,7 @@ def nosotros(request):
 
     return render(request, 'nosotros.html', dataFormulario)
 
-def galeria(request):
+def artistas(request):
     dataFormulario = {
         'form': ContactoForm()
     }
@@ -33,12 +33,10 @@ def galeria(request):
         'Artistas': Artistas
     }
 
-    return render(request, 'galeria.html', data)
+    return render(request, 'artistas.html', data)
 
-# Falta crear la vista de artista y reemplazar esta
 
-def artista1(request):
-    return render(request, 'artista1.html')
+
 
 # ------------------------------
 
@@ -61,13 +59,27 @@ def contacto(request):
 
 
 def login_usuario(request):
+    if request.user.groups.filter(name="Usuario"):
+        return redirect("home")
+    elif request.user.groups.filter(name="Artistas"):
+        return redirect("baseArtista")
+    elif request.user.groups.filter(name="Administrador"):
+        return redirect("perfilAdministrador")
+    
+    messages.success(request, f"Bienvenido {request.user.username}")
+    return redirect(to="home")
+
+def login_artista(request):
+    return render(request, 'perfilArtista.html')
+
+def login_administrador(request):
+    return render(request, 'perfilAdministrador.html')
+
+def artista1(request):
     dataFormulario = {
         'form': ContactoForm
     }
-
-    messages.success(request, f"Bienvenido {request.user.username}")
-    return redirect('home')
-
+    return render(request, 'artista1.html', dataFormulario)
 
 def registro_user(request):
     dataFormulario = {
@@ -109,5 +121,3 @@ def registro_user(request):
     return render(request, "registration/registroUser.html", dataFormulario) # Cambiar a registroArtista.html si se quiere crear un artista
 
 
-def perfilArtista(request):
-    return render(request, 'perfilArtista.html')

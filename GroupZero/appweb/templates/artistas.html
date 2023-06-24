@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}
+<title>Artista</title>
+{% endblock %}
+{% block contacto %}Contacto {% endblock %}
+
+
+
+
+{% block contenido %}
+<style>
+  .artista {
+    border: 10px solid #ffffff; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+</style>
+
+<div class="text-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <h4>
+          A continuación te presentamos una selección de obras de nuestros artistas.
+        </h4>
+      </div>
+    </div>
+  </div>
+  <br />
+
+  {% for artista in Artistas %}
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-12">
+        <div class="col-lg-4 artista mx-auto">
+          <img src="{{ artista.foto.url }}" class="img-fluid rounded border">
+        </div>
+        <br>
+        <p class="mx-auto" id="textoArtista">
+          <strong>{{ artista.nombre }} {{ artista.apellido }}</strong>
+        </p>
+        <p class="mx-auto">
+          {{ artista.descripcion }}
+        </p>
+        <p class="mx-auto">
+          Alguna de sus obras:
+        </p>
+        <p class="mx-auto">
+          {{ artista.obras }} <!-- Falta un for con las obras de los artistas que reemplaza esto. -->
+        </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+
+<br />
+
+{% endblock %}
