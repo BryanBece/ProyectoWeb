@@ -5,3 +5,5 @@ from .models import *
 
 admin.site.register(Contacto)
 admin.site.register(Artista)
+admin.site.register(FormularioArt)
+admin.site.register(Obra)
