@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -21,20 +22,21 @@ class Contacto(models.Model):
         return self.nombre
     
 class Artista(models.Model):
-    nombre = models.CharField(max_length=50)
-    apellido = models.CharField(max_length=50)
-    descripcion = models.TextField()
-    estilo = models.CharField(max_length=50)
-    foto = models.ImageField(upload_to='artistas', null=True, blank=True)
-    #user
+    nombre = models.CharField(max_length=100)
+    apellido = models.CharField(max_length=100)
+    correo = models.EmailField()
+    contraseña = models.CharField(max_length=100)
+    estilo = models.CharField(max_length=100)
+    descripcion = models.CharField(max_length=200)
+    foto_perfil = models.ImageField(upload_to='fotos_artista/')
     
     def __str__(self):
         return self.nombre
 
 list_estado_obra = [
-    (0,'Disponible'),
-    (1,'Vendida'),
-    (2,'En Exhibición')
+    (0,'En Espera de Aprobación'),
+    (1,'En Exhibición'),
+    (2,'Vendida')
 ]
 
 class FormularioArt(models.Model):
@@ -54,11 +56,11 @@ class FormularioArt(models.Model):
         
 class Obra(models.Model):
     nombreObra = models.CharField(max_length=50)
-    autor = models.ForeignKey(Artista, on_delete=models.PROTECT)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     medidas = models.CharField(max_length=20)
     tecnica = models.CharField(max_length=50)
     precio = models.IntegerField()
-    estado = models.IntegerField(choices=list_estado_obra)
+    estado = models.IntegerField(choices=list_estado_obra, default=0)
     imagenObra = models.ImageField(upload_to='obras')
     historia = models.TextField(null=True, blank=True)
 

@@ -93,6 +93,7 @@ def artista1(request):
     }
     return render(request, 'artista1.html', dataFormulario)
 
+
 def registro_user(request):
     dataFormulario = {
         'form': ContactoForm
@@ -133,3 +134,78 @@ def registro_user(request):
     return render(request, "registration/registroUser.html", dataFormulario) # Cambiar a registroArtista.html si se quiere crear un artista
 
 
+
+def registro_Art(request):
+    data = {
+        'form': ArtistaForm()
+    }
+
+    if request.method == 'POST':
+        form = ArtistaForm(request.POST, request.FILES)
+        if form.is_valid():
+            nombre = form.cleaned_data.get('nombre')
+            apellido = form.cleaned_data.get('apellido')
+            correo = form.cleaned_data.get('correo')
+            contraseña = form.cleaned_data.get('contraseña')
+            estilo = form.cleaned_data.get('estilo')
+            descripcion = form.cleaned_data.get('descripcion')
+            foto_perfil = form.cleaned_data.get('foto_perfil')
+
+            if User.objects.filter(email=correo).exists():
+                messages.error(request, "El correo ya está registrado.")
+            else:
+                usu = User()
+                usu.set_password(contraseña)
+                usu.email = correo
+                usu.username = nombre
+                usu.first_name = nombre
+                usu.last_name = ""
+                usu.save()
+
+                grupo = Group.objects.get(name="Artistas")
+                usu.groups.add(grupo)  # Agregar usuario al grupo "Artistas"
+
+                artista = Artista()
+                artista.nombre = nombre
+                artista.apellido = apellido
+                artista.correo = correo
+                artista.estilo = estilo
+                artista.descripcion = descripcion
+                artista.foto_perfil = foto_perfil
+                artista.save()
+
+                messages.success(request, "Artista creado correctamente.")
+                return redirect(reverse("home"))
+    else:
+        form = ArtistaForm()
+    return render(request, 'registration/registroArtista.html', data)
+
+
+
+def registroObra(request):
+    if request.method == "POST":
+        nombre = request.POST.get("nombreObra")
+        descripcion = request.POST.get("descripcionObra")
+        imagen = request.POST.get("fotoObra")
+        precio = request.POST.get("precioObra")
+        tecnica = request.POST.get("tecnicaObra")
+        medidas = request.POST.get("medidasObra")
+        
+        try:
+            obra = Obra()
+            obra.nombreObra = nombre
+            obra.historia = descripcion
+            obra.imagenObra = imagen
+            obra.precio = precio
+            obra.tecnica = tecnica
+            obra.medidas = medidas
+
+            obra.save()
+            messages.success(request, "Obra creada correctamente.")
+            print("Obra creada correctamente.")
+            redirect(request.META.get('HTTP_REFERER', 'home'))
+        except:
+            messages.error(request, "Error al crear la obra.")
+            print("Error al crear la obra.")
+    
+    return redirect(request.META.get('HTTP_REFERER', 'home'))
