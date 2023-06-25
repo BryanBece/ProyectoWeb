@@ -37,14 +37,10 @@ def artistas(request):
 
 
 def galeria(request):
-    dataFormulario = {
-        'form': ContactoForm()
-    }
-
     Obras = Obra.objects.all()
 
     data = {
-        'form': dataFormulario['form'],
+        'form': ContactoForm(),
         'Obras': Obras
     }
 
@@ -159,7 +155,7 @@ def registro_Art(request):
                 usu.email = correo
                 usu.username = nombre
                 usu.first_name = nombre
-                usu.last_name = ""
+                usu.last_name = apellido
                 usu.save()
 
                 grupo = Group.objects.get(name="Artistas")
@@ -172,6 +168,7 @@ def registro_Art(request):
                 artista.estilo = estilo
                 artista.descripcion = descripcion
                 artista.foto_perfil = foto_perfil
+                artista.contraseña = contraseña
                 artista.save()
 
                 messages.success(request, "Artista creado correctamente.")
