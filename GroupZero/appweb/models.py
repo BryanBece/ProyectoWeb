@@ -27,7 +27,7 @@ class Artista(models.Model):
     correo = models.EmailField()
     contraseña = models.CharField(max_length=100)
     estilo = models.CharField(max_length=100)
-    descripcion = models.CharField(max_length=200)
+    descripcion = models.TextField()
     foto_perfil = models.ImageField(upload_to='fotos_artista/')
     
     def __str__(self):
