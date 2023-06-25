@@ -12,3 +12,8 @@ class ArtistaForm(forms.ModelForm):
     class Meta:
         model = Artista
         fields = "__all__"
+
+class ObraForm(forms.ModelForm):
+    class Meta:
+        model = Obra
+        fields = "nombreObra", "medidas", "tecnica", "precio", "imagenObra", "historia"

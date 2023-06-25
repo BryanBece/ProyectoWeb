@@ -1,13 +1,12 @@
-{% extends "baseArtista.html" %}
-
+{% extends 'baseArtista.html' %}
 {% load static %}
 {% block titulo %}
-Registro Artista
+<title>Registrar Obra</title>
 {% endblock %}
 {% load crispy_forms_tags %}
 
 
-{% block contenidoAdmin %}
+{% block contenidoArt %}
 
 <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -35,7 +34,7 @@ Registro Artista
 
                                         <div class="pt-1 mb-4">
                                             <button class="btn btn-dark btn-lg btn-block" type="submit">
-                                                Registrar Artista
+                                                Registrar Obra
                                             </button>
                                         </div>
     
@@ -119,6 +118,5 @@ Registro Artista
         </div>
     </div>
 </div>
+
 {% endblock %}
-
-
