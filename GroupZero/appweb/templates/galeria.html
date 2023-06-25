@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}
+<title>Galeria de Obras</title>
+{% endblock %}
+{% block contacto %}Contacto{% endblock %}
+
+{% block contenido %}
+  
+  <div class="text-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <h4>
+            A continuación te presentamos las obras de nuestros artistas.
+          </h4>
+        </div>
+      </div>
+    </div>
+    <br />
+  
+    {% for obras in Obras %}
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-12">
+          <div class="col-lg-4 obras mx-auto">
+            <img src="{{ obras.imagenObra.url }}" class="img-fluid rounded border">
+          </div>
+          <br>
+          <p class="mx-auto" id="datosObra">
+            <strong>{{ obras.autor }}</strong>
+          </p>
+          <p class="mx-auto">
+            {{ obras.nombreObra }}
+          </p>
+          <p class="mx-auto">
+            Medidas: {{obras.medidas}}
+          </p>
+          <p class="mx-auto">
+            Estado: {{obras.estado}}
+          </p>
+    
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}

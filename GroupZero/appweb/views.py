@@ -36,7 +36,19 @@ def artistas(request):
     return render(request, 'artistas.html', data)
 
 
+def galeria(request):
+    dataFormulario = {
+        'form': ContactoForm()
+    }
 
+    Obras = Obra.objects.all()
+
+    data = {
+        'form': dataFormulario['form'],
+        'Obras': Obras
+    }
+
+    return render(request, 'galeria.html', data)
 
 # ------------------------------
 
