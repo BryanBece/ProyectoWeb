@@ -14,4 +14,5 @@ urlpatterns = [
     path('perfilAdm/', login_administrador, name="perfilAdministrador"),
     path('galeria/', galeria, name="galeria"),
     path('registro_artista/', registro_Art, name="reg_artista"),
+    path('registro_obra/', registro_obra, name="reg_obra"),
 ]

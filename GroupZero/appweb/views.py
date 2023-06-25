@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from .forms import *
 from django.contrib.auth.models import User, Group
-from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.urls import reverse
 
@@ -37,14 +37,10 @@ def artistas(request):
 
 
 def galeria(request):
-    dataFormulario = {
-        'form': ContactoForm()
-    }
-
     Obras = Obra.objects.all()
 
     data = {
-        'form': dataFormulario['form'],
+        'form': ContactoForm(),
         'Obras': Obras
     }
 
@@ -159,7 +155,7 @@ def registro_Art(request):
                 usu.email = correo
                 usu.username = nombre
                 usu.first_name = nombre
-                usu.last_name = ""
+                usu.last_name = apellido
                 usu.save()
 
                 grupo = Group.objects.get(name="Artistas")
@@ -172,6 +168,7 @@ def registro_Art(request):
                 artista.estilo = estilo
                 artista.descripcion = descripcion
                 artista.foto_perfil = foto_perfil
+                artista.contraseña = contraseña
                 artista.save()
 
                 messages.success(request, "Artista creado correctamente.")
@@ -182,30 +179,34 @@ def registro_Art(request):
 
 
 
-def registroObra(request):
-    if request.method == "POST":
-        nombre = request.POST.get("nombreObra")
-        descripcion = request.POST.get("descripcionObra")
-        imagen = request.POST.get("fotoObra")
-        precio = request.POST.get("precioObra")
-        tecnica = request.POST.get("tecnicaObra")
-        medidas = request.POST.get("medidasObra")
-        
-        try:
+@login_required
+def registro_obra(request):
+
+    data = {
+        'form': ObraForm()
+    }
+    if request.method == 'POST':
+        form = ObraForm(request.POST, request.FILES)
+        if form.is_valid():
+            nombreObra = form.cleaned_data.get('nombreObra')
+            historia = form.cleaned_data.get('historia')
+            imagenObra = form.cleaned_data.get('imagenObra')
+            precio = form.cleaned_data.get('precio')
+            tecnica = form.cleaned_data.get('tecnica')
+            medidas = form.cleaned_data.get('medidas')
+
             obra = Obra()
-            obra.nombreObra = nombre
-            obra.historia = descripcion
-            obra.imagenObra = imagen
+            obra.nombreObra = nombreObra
+            obra.historia = historia
+            obra.imagenObra = imagenObra
             obra.precio = precio
             obra.tecnica = tecnica
             obra.medidas = medidas
-
+            obra.autor = request.user  # Asociar la obra con el artista actualmente conectado
             obra.save()
+
             messages.success(request, "Obra creada correctamente.")
-            print("Obra creada correctamente.")
-            redirect(request.META.get('HTTP_REFERER', 'home'))
-        except:
-            messages.error(request, "Error al crear la obra.")
-            print("Error al crear la obra.")
-    
-    return redirect(request.META.get('HTTP_REFERER', 'home'))
+            return redirect('home')
+    else:
+        form = ObraForm()
+    return render(request, 'registration/registroObra.html', data)
