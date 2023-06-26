@@ -5,55 +5,121 @@
 {% endblock %}
 
 {% block contenidoArt %}
-<br>
-<div class="container-fluid">
+<style>
+  .table td,
+  .table th {
+      vertical-align: middle;
+      text-align: center;
+  }
+
+  .enlarge-image {
+      transition: transform 0.3s;
+  }
+
+  .enlarge-image:hover {
+      transform: scale(5);
+      max-width: 300px;
+      max-height: 300px;
+  }
+</style>
+
+<!--
+  OBRAS APROBADAS
+-->
+
+<div class="container" id="OP2">
   <div class="row">
-    <div class="col-3"></div>
-    <div class="col-6">
-      <div id="carouselExampleIndicators" class="carousel slide">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-            aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-            aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-            aria-label="Slide 3"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
-            aria-label="Slide 4"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="{% static './Images/Galeria/Pedro_Machuca - big-c-madera.png' %}" class="d-block w-100 img-fluid"
-              style="object-fit: cover; height: 400px" />
-          </div>
-          <div class="carousel-item">
-            <img src="{% static './Images/Pedro Machuca/lola-home-madera.png' %}" class="d-block w-100 img-fluid"
-              style="object-fit: cover; height: 400px" />
-          </div>
-          <div class="carousel-item">
-            <img src="{% static './Images/Pedro Machuca/maison-de-vouge-madera.png' %}" class="d-block w-100 img-fluid"
-              style="object-fit: cover; height: 400px" />
-          </div>
-          <div class="carousel-item">
-            <img src="{% static './Images/Pedro Machuca/pez-madera.png' %}" class="d-block w-100 img-fluid"
-              style="object-fit: cover; height: 400px" />
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" 
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" 
-          data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+      <div class="col-12 text-center">
+          <h2>Tus obras rechazadas</h2>
+          <br><br>
       </div>
-    </div>
-    <div class="col-3"></div>
   </div>
 </div>
-<br>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nombre de la Obra</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Imagen</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Motivo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for obra in publicaciones %}
+            {% if user.id == obra.autor_id %}
+            {% if obra.estado == 2 %}
+            <tr>
+              <th scope="row">{{ obra.id }}</th>
+              <td>{{obra.nombreObra}}</td>
+              <td>{{obra.historia}}</td>
+              <td>
+                <img src="{{ obra.imagenObra.url }}" alt="Imagen de la obra" width="50" class="enlarge-image">
+              </td>
+              <td>Rechazada</td>
+              <td> {{ obra.mensaje_rechazo }}</td>
+            </tr>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-{% endblock %}
+<!--
+  OBRAS APROBADAS
+-->
+
+<div class="container" id="OP2">
+  <div class="row">
+      <div class="col-12 text-center">
+          <h2>Tus obras</h2>
+          <br><br>
+      </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nombre de la Obra</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Imagen</th>
+              <th scope="col">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for obra in publicaciones %}
+            {% if user.id == obra.autor_id %}
+            {% if obra.estado == 1 %}
+            <tr>
+              <th scope="row">{{ obra.id }}</th>
+              <td>{{obra.nombreObra}}</td>
+              <td>{{obra.historia}}</td>
+              <td>
+                <img src="{{ obra.imagenObra.url }}" alt="Imagen de la obra" width="50" class="enlarge-image">
+              </td>
+              <td>Publicada</td>
+              <td>
+            </tr>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+    {% endblock %}

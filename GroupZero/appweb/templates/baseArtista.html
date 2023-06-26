@@ -20,9 +20,13 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css" />
+  <script src="
+  https://cdn.jsdelivr.net/npm/sweetalert2@11.7/dist/sweetalert2.all.min.js
+  "></script>
+  <link href="
+  https://cdn.jsdelivr.net/npm/sweetalert2@11.7/dist/sweetalert2.min.css
+  " rel="stylesheet">
   {% load static %}
-  <script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
-  <script src="{% static 'js/validaciones.js' %}"></script>
   {% load crispy_forms_tags %}
   {% block titulo %}
   <title></title>
@@ -52,10 +56,6 @@
             <li class="nav-item" id="ItemNavBar">
               <a class="nav-link" href="{% url 'reg_obra' %}">Registrar Obra</a>
             </li>
-            <li class="nav-item" id="ItemNavBar">
-              <a class="nav-link" id="mensaje" aria-current="page" data-bs-toggle="modal"
-                data-bs-target="#mesagModal">Mensaje</a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" aria-current="page">Conectado/a {{user.username}}</a>
             </li>
@@ -67,49 +67,9 @@
         </div>
       </div>
     </nav>
-
-    <div class="modal fade" id="modalEnvio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">
-              ¡Enviado con éxito!
-            </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">Tu solicitud ha sido enviada con éxito.</div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-              Cerrar
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
   
     <!-- Fin Modal formulario de ingreso de obra-->
-  
-    <!---------------------------------------modal mensaje------------------------------------->
-    <div class="modal fade" id="mesagModal" tabindex="-1" aria-labelledby="mesagModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="mesagModalLabel">
-              Revisa tus Mensajes
-            </h5>
-  
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <!-- Muestra los mensajes -->
-  
-          <div class="modal-body">
-            <h7>¡Aun no tienes mensajes!</h7>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--------------------------------------------fin modal mensaje------------------------------->
-    
+
     <main>
       {% block contenidoArt %}
       {% endblock %}

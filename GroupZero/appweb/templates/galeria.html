@@ -20,6 +20,7 @@
     <br />
   
     {% for obras in Obras %}
+    {% if obras.estado == 1 %}
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-lg-8 col-md-12">
@@ -28,17 +29,21 @@
           </div>
           <br>
           <p class="mx-auto" id="datosObra">
-            <strong>{{ obras.autor }}</strong>
+            <strong>Autor: {{ obras.nombreApellido_Autor }}</strong>
           </p>
           <p class="mx-auto">
-            {{ obras.nombreObra }}
+            Nombre Obra: {{ obras.nombreObra }}
           </p>
           <p class="mx-auto">
             Medidas: {{obras.medidas}}
           </p>
+          <p class="mx-auto">
+            <strong>Precio: ${{obras.precio}}</strong>
+          </p>
         </div>
       </div>
     </div>
+    {% endif %}
     {% endfor %}
   </div>
 

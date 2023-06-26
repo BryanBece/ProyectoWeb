@@ -25,12 +25,13 @@ def artistas(request):
     dataFormulario = {
         'form': ContactoForm()
     }
-
+    Obras = Obra.objects.all()
     Artistas = Artista.objects.all()
 
     data = {
         'form': dataFormulario['form'],
-        'Artistas': Artistas
+        'Artistas': Artistas,
+        'Obras': Obras
     }
 
     return render(request, 'artistas.html', data)
@@ -72,7 +73,7 @@ def login_usuario(request):
     if request.user.groups.filter(name="Usuario"):
         return redirect("home")
     elif request.user.groups.filter(name="Artistas"):
-        return redirect("baseArtista")
+        return redirect("perfilArt")
     elif request.user.groups.filter(name="Administrador"):
         return redirect("perfilAdministrador")
     
@@ -80,7 +81,13 @@ def login_usuario(request):
     return redirect(to="home")
 
 def login_artista(request):
-    return render(request, 'perfilArtista.html')
+    publicaciones = Obra.objects.all()
+
+    data = {
+        "publicaciones": publicaciones
+    }
+
+    return render(request, 'perfilArtista.html', data)
 
 def login_administrador(request):
     publicaciones = Obra.objects.all()

@@ -49,10 +49,6 @@
           <li class="nav-item" id="ItemNavBar">
             <a class="nav-link" href="{% url 'perfilAdministrador' %}">Inicio</a>
           </li>
-          <li class="nav-item" id="ItemNavBar">
-            <a class="nav-link" id="mensaje" aria-current="page" data-bs-toggle="modal"
-              data-bs-target="#mesagModal">Mensajes</a>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'reg_artista' %}">Registrar Artista</a>
           </li>
@@ -65,31 +61,6 @@
     </div>
   </nav>
 
-  <!---------------------------------------modal mensaje------------------------------------->
-  <div class="modal fade" id="mesagModal" tabindex="-1" aria-labelledby="mesagModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="mesagModalLabel">
-            Revisa tus Mensajes
-          </h5>
-
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <!-- Muestra los mensajes -->
-
-        <div class="modal-body">
-          <h7>¡Aun no tienes mensajes!</h7>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-            Cerrar
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--------------------------------------------fin modal mensaje------------------------------->
   
   <main>
 
