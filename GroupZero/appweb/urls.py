@@ -16,5 +16,6 @@ urlpatterns = [
     path('galeria/', galeria, name="galeria"),
     path('registro_artista/', registro_Art, name="reg_artista"),
     path('registro_obra/', registro_obra, name="reg_obra"),
-    path('aprobarObras/<int:id>/', views.aprobarObras, name='aprobacionObras')
+    path('aprobarObras/<int:id>/', views.aprobarObras, name='aprobacionObras'),
+    path('rechazar-publicacion/<int:publicacion_id>/', views.rechazar_publicacion, name='rechazar_publicacion'),
 ]

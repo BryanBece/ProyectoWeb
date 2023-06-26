@@ -229,3 +229,16 @@ def aprobarObras(request, id):
     messages.success(request, 'La obra: ' + obra.nombreObra + ' ha sido aprobada')
 
     return redirect('perfilAdministrador')
+
+def rechazar_publicacion(request, publicacion_id):
+    if request.method == 'POST':
+        motivo_rechazo = request.POST.get('motivo_rechazo')
+        publicacion = Obra.objects.get(id=publicacion_id)
+        publicacion.estado = 2  # 2 representa el estado de "rechazado"
+        publicacion.mensaje_rechazo = motivo_rechazo
+        publicacion.save()
+        messages.success(request, 'La publicación ha sido rechazada exitosamente.')
+        return redirect('perfilAdministrador')
+    else:
+        messages.error(request, 'Se produjo un error al rechazar la publicación.')
+        return redirect('perfilAdministrador')

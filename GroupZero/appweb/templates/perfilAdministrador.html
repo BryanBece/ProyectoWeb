@@ -25,6 +25,8 @@ Perfil Admin
     }
 </style>
 
+<section>
+
 <div class="container" id="OP2">
     <div class="row">
         <div class="col-12 text-center">
@@ -45,8 +47,8 @@ Perfil Admin
                             <th scope="col">Artista</th>
                             <th scope="col">Nombre de la Obra</th>
                             <th scope="col">Imagen</th>
-                            <th scope="col">Estado</th> 
-                            <th scope="col">Acción</th> 
+                            <th scope="col">Estado</th>
+                            <th scope="col">Acción</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,21 +59,44 @@ Perfil Admin
                             <td>{{obra.autor}}</td>
                             <td>{{obra.nombreObra}}</td>
                             <td>
-                                <img src="{{ obra.imagenObra.url }}" alt="Imagen de la obra" width="50" class="enlarge-image">
+                                <img src="{{ obra.imagenObra.url }}" alt="Imagen de la obra" width="50"
+                                    class="enlarge-image">
                             </td>
                             <td>En espera</td>
                             <td>
-                                <a href="#" class="btn btn-success btn-sm" onclick="aprobarObras('{{obra.id}}')">Aprobar</a>
-                                <a href="#" class="btn btn-danger btn-sm">Rechazar</a>
-                            </td>
-                        </tr>
+                                <a href="#" class="btn btn-success btn-sm"
+                                    onclick="aprobarObras('{{obra.id}}')">Aprobar</a>
+                                    <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Rechazar</a>
+                                </td>
+                            </tr>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Rechazar obra</h5>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <form class="row" id="rechazoForm" action="" method="POST">
+                                        {% csrf_token %}
+                                            <label for="">Motivo</label>
+                                            <textarea name="motivo_rechazo" id="" cols="20" rows="5" class="form-control"></textarea>
+                                      </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                      <button type="submit" class="btn btn-danger" onclick="rechazarObras('{{obra.id}}')">Rechazar</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                         {% endif %}
                         {% endfor %}
                     </tbody>
                 </table>
             </div>
         </div>
-        
+
         <script>
             function aprobarObras(id) {
                 Swal.fire({
@@ -81,35 +106,35 @@ Perfil Admin
                     showCancelButton: true,
                     cancelButtonText: "No, cancelar",
                     confirmButtonText: "Sí, aprobar"
-                }).then(function(result) {
+                }).then(function (result) {
                     if (result.isConfirmed) {
                         window.location.href = "/aprobarObras/" + id + "/";
                     }
                 });
             }
+
+            function rechazarObras(id) {
+        Swal.fire({
+            title: "Advertencia",
+            text: "¿Estás seguro que deseas rechazar la publicación?",
+            icon: "question",
+            showCancelButton: true,
+            cancelButtonText: "No, cancelar",
+            confirmButtonText: "Sí, rechazar"
+        }).then(function(result) {
+            if (result.isConfirmed) {
+                document.getElementById('rechazoForm').action = "/rechazar-publicacion/" + id + "/";
+                document.getElementById('rechazoForm').submit();
+            }
+        });
+    }
         </script>
     </div>
 </div>
-        
-        <script>
-            function aprobarObras(id) {
-                Swal.fire({
-                    title: "Advertencia",
-                    text: "¿Estás seguro que deseas aprobar la publicación?",
-                    icon: "question",
-                    showCancelButton: true,
-                    cancelButtonText: "No, cancelar",
-                    confirmButtonText: "Sí, aprobar"
-                }).then(function(result) {
-                    if (result.isConfirmed) {
-                        window.location.href = "/aprobarObras/" + id + "/";
-                    }
-                });
-            }
-        </script>
-    </div>
+</div>
 </div>
 </section>
+
 <section>
 
     <div class="container" id="OP2">
@@ -120,7 +145,7 @@ Perfil Admin
             </div>
         </div>
     </div>
-    
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-8">
@@ -132,8 +157,8 @@ Perfil Admin
                                 <th scope="col">Artista</th>
                                 <th scope="col">Nombre de la Obra</th>
                                 <th scope="col">Imagen</th>
-                                <th scope="col">Estado</th> 
-                                <th scope="col">Acción</th> 
+                                <th scope="col">Estado</th>
+                                <th scope="col">Acción</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -144,7 +169,8 @@ Perfil Admin
                                 <td>{{obra.autor}}</td>
                                 <td>{{obra.nombreObra}}</td>
                                 <td>
-                                    <img src="{{ obra.imagenObra.url }}" alt="Imagen de la obra" width="50" class="enlarge-image">
+                                    <img src="{{ obra.imagenObra.url }}" alt="Imagen de la obra" width="50"
+                                        class="enlarge-image">
                                 </td>
                                 <td>Aprobada</td>
                                 <td>
@@ -159,51 +185,4 @@ Perfil Admin
             </div>
 
 </section>
-
-<section>
-
-    <div class="container" id="OP2">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h2>Obras Vendidas</h2>
-                <br><br>
-            </div>
-        </div>
-    </div>
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-8">
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover">
-                        <thead class="thead-light">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Artista</th>
-                                <th scope="col">Nombre de la Obra</th>
-                                <th scope="col">Imagen</th>
-                                <th scope="col">Estado</th> 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for obra in publicaciones %}
-                            {% if obra.estado == 2 %}
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>{{obra.autor}}</td>
-                                <td>{{obra.nombreObra}}</td>
-                                <td>
-                                    <img src="{{ obra.imagenObra.url }}" alt="Imagen de la obra" width="50" class="enlarge-image">
-                                </td>
-                                <td>Vendida</td>
-                            </tr>
-                            {% endif %}
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-</section>
-
 {% endblock %}

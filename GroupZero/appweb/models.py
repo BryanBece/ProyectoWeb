@@ -36,7 +36,7 @@ class Artista(models.Model):
 list_estado_obra = [
     (0,'En Espera de Aprobación'),
     (1,'En Exhibición'),
-    (2,'Vendida')
+    (2,'Rechazado')
 ]
 
 
@@ -52,6 +52,7 @@ class Obra(models.Model):
     estado = models.IntegerField(choices=list_estado_obra, default=0)
     imagenObra = models.ImageField(upload_to='obras')
     historia = models.TextField(null=True, blank=True)
+    mensaje_rechazo = models.TextField(max_length=200, null=False, blank=True)
 
     def __str__(self):
         return self.nombreObra
