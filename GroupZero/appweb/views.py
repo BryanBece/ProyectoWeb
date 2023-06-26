@@ -191,6 +191,7 @@ def registro_obra(request):
         form = ObraForm(request.POST, request.FILES)
         if form.is_valid():
             nombreObra = form.cleaned_data.get('nombreObra')
+            #nombreApellidoAutores = form.cleaned_data('nombreApellidoAutores')
             historia = form.cleaned_data.get('historia')
             imagenObra = form.cleaned_data.get('imagenObra')
             precio = form.cleaned_data.get('precio')
@@ -199,6 +200,7 @@ def registro_obra(request):
 
             obra = Obra()
             obra.nombreObra = nombreObra
+            #obra.nombreApellidoAutores = nombreApellidoAutores
             obra.historia = historia
             obra.imagenObra = imagenObra
             obra.precio = precio

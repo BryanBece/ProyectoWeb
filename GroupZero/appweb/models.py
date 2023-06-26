@@ -44,6 +44,7 @@ list_estado_obra = [
         
 class Obra(models.Model):
     nombreObra = models.CharField(max_length=50)
+    #nombreApellidoAutores = models.CharField(max_length=100)
     autor = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     medidas = models.CharField(max_length=20)
     tecnica = models.CharField(max_length=50)
