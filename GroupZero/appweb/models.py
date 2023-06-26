@@ -40,6 +40,11 @@ list_estado_obra = [
     (2,'Rechazado')
 ]
 
+list_categoria_obra = [
+    (0,'Pintura'),
+    (1,'Escultura'),
+    (2,'Carpintería'),
+]
 
 #class Categoria(models)
         
@@ -54,6 +59,7 @@ class Obra(models.Model):
     imagenObra = models.ImageField(upload_to='obras')
     historia = models.TextField(null=True, blank=True)
     mensaje_rechazo = models.TextField(max_length=200, null=False, blank=True)
+    categoriaObra = models.IntegerField(choices=list_categoria_obra, default=0)
 
     def __str__(self):
         return self.nombreObra

@@ -10,7 +10,8 @@ from django.urls import reverse
 
 def home(request):
     dataFormulario = {
-        'form': ContactoForm
+        'form': ContactoForm,
+        'obras': Obra.objects.all()
     }  
     return render(request, 'home.html', dataFormulario)
 
