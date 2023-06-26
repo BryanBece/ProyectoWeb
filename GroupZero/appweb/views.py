@@ -83,7 +83,13 @@ def login_artista(request):
     return render(request, 'perfilArtista.html')
 
 def login_administrador(request):
-    return render(request, 'perfilAdministrador.html')
+    publicaciones = Obra.objects.all()
+
+    data = {
+        "publicaciones": publicaciones
+    }
+
+    return render(request, 'perfilAdministrador.html', data)
 
 def artista1(request):
     dataFormulario = {
@@ -214,3 +220,12 @@ def registro_obra(request):
     else:
         form = ObraForm()
     return render(request, 'registration/registroObra.html', data)
+
+
+def aprobarObras(request, id):
+    obra = get_object_or_404(Obra, id=id)
+    obra.estado = 1
+    obra.save()  # Guarda la publicación actualizada en la base de datos
+    messages.success(request, 'La obra: ' + obra.nombreObra + ' ha sido aprobada')
+
+    return redirect('perfilAdministrador')
