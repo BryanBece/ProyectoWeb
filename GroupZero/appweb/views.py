@@ -39,6 +39,8 @@ def artistas(request):
 def galeria(request):
     Obras = Obra.objects.all()
 
+    #obra = Obra.objects.raw("select * from appweb_Obra where autor = user")
+
     data = {
         'form': ContactoForm(),
         'Obras': Obras

@@ -39,18 +39,6 @@ list_estado_obra = [
     (2,'Vendida')
 ]
 
-class FormularioArt(models.Model):
-    nombreObra = models.CharField(max_length=50)
-    autor = models.CharField(max_length=50)
-    medidas = models.CharField(max_length=20)
-    tecnica = models.CharField(max_length=50)
-    precio = models.IntegerField()
-    estado = models.IntegerField(choices=list_estado_obra)
-    imagenObra = models.ImageField(upload_to='obras')
-    historia = models.TextField(null=True,blank=True)
-
-    def __str__(self):
-        return self.nombreObra
 
 #class Categoria(models)
         
