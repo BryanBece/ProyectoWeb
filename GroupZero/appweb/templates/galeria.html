@@ -7,57 +7,66 @@
 
 {% block contenido %}
   
-  <div class="text-center">
-    <div class="container">
+<div class="text-center">
+  <div class="container">
       <div class="row justify-content-center">
-        <div class="col-md-10">
-          <h4>
-            A continuación te presentamos las obras de nuestros artistas.
-          </h4>
-        </div>
-      </div>
-    </div>
-    <br />
-  
-    {% for obras in Obras %}
-    {% if obras.estado == 1 %}
-    <div class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-12">
-          <div class="col-lg-4 obras mx-auto">
-            <img src="{{ obras.imagenObra.url }}" class="img-fluid rounded border" style="max-width: 400; max-height: 400;">
+          <div class="col-md-10">
+              <h4>A continuación te presentamos las obras de nuestros artistas.</h4>
           </div>
-          <br>
-          <p class="mx-auto" id="datosObra">
-            <strong>Autor: {{ obras.nombreApellido_Autor }}</strong>
-          </p>
-          <p class="mx-auto">
-            Nombre Obra: {{ obras.nombreObra }}
-          </p>
-          {% if obras.categoriaObra == 0 %}
-          <p class="mx-auto">
-            Categoria Obra: Pintura
-          </p>
-          {% elif obras.categoriaObra == 1 %}
-          <p class="mx-auto">
-            Categoria Obra: Escultura
-          </p>
-          {% elif obras.categoriaObra == 2 %}
-          <p class="mx-auto">
-            Categoria Obra: Carpinteria
-          </p>
-          {% endif %}
-          <p class="mx-auto">
-            Medidas: {{obras.medidas}}
-          </p>
-          <p class="mx-auto">
-            <strong>Precio: ${{obras.precio}}</strong>
-          </p>
-        </div>
       </div>
-    </div>
-    {% endif %}
-    {% endfor %}
   </div>
+  <br />
+
+  {% if Obras %}
+      {% for obra in Obras %}
+          {% if obra.estado == 1 %}
+              <div class="container-fluid">
+                  <div class="row justify-content-center">
+                      <div class="col-lg-8 col-md-12">
+                          <div class="col-lg-4 obras mx-auto">
+                              <img src="{{ obra.imagenObra.url }}" class="img-fluid rounded border"
+                                  style="max-width: 400; max-height: 400;">
+                          </div>
+                          <br>
+                          <p class="mx-auto" id="datosObra">
+                              <strong>Autor: {{ obra.nombreApellido_Autor }}</strong>
+                          </p>
+                          <p class="mx-auto">
+                              Nombre Obra: {{ obra.nombreObra }}
+                          </p>
+                          {% if obra.categoriaObra == 0 %}
+                              <p class="mx-auto">
+                                  Categoria Obra: Pintura
+                              </p>
+                          {% elif obra.categoriaObra == 1 %}
+                              <p class="mx-auto">
+                                  Categoria Obra: Escultura
+                              </p>
+                          {% elif obra.categoriaObra == 2 %}
+                              <p class="mx-auto">
+                                  Categoria Obra: Carpinteria
+                              </p>
+                          {% endif %}
+                          <p class="mx-auto">
+                              Medidas: {{ obra.medidas }}
+                          </p>
+                          <p class="mx-auto">
+                              <strong>Precio: ${{ obra.precio }}</strong>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+          {% endif %}
+      {% endfor %}
+  {% else %}
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-md-10">
+                  <p>Actualmente no hay obras disponibles para exhibición</p>
+              </div>
+          </div>
+      </div>
+  {% endif %}
+</div>
 
 {% endblock %}

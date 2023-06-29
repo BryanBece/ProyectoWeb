@@ -26,45 +26,49 @@
   <div class="row">
     <div class="col-3"></div>
     <div class="col-6">
-      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          {% for obra in obras %}
-          {% if obra.estado == 1 %}
-          {% if forloop.counter == 1 %}
-          <div class="carousel-item active" data-bs-interval="5000">
-            <a href="{% url 'galeria' %}">
-              <img src="{{ obra.imagenObra.url }}" class="d-block w-100 img-fluid" alt="..." style="height: 600px;">
-            </a>
-            <div class="carousel-caption d-none d-md-block">
-              <h5>{{ obra.nombreObra}}</h5>
-              <p>{{ obra.historia}}</p>
-            </div>
+      {% if obras %}
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            {% for obra in obras %}
+              {% if obra.estado == 1 %}
+                {% if forloop.counter == 1 %}
+                  <div class="carousel-item active" data-bs-interval="5000">
+                    <a href="{% url 'galeria' %}">
+                      <img src="{{ obra.imagenObra.url }}" class="d-block w-100 img-fluid" alt="..." style="height: 600px;">
+                    </a>
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>{{ obra.nombreObra }}</h5>
+                      <p>{{ obra.historia }}</p>
+                    </div>
+                  </div>
+                {% else %}
+                  <div class="carousel-item" data-bs-interval="5000">
+                    <a href="{% url 'galeria' %}">
+                      <img src="{{ obra.imagenObra.url }}" class="d-block w-100 img-fluid" alt="..." style="height: 600px;">
+                    </a>
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>{{ obra.nombreObra }}</h5>
+                      <p>{{ obra.historia }}</p>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
           </div>
-          {% else %}
-          <div class="carousel-item" data-bs-interval="5000">
-            <a href="{% url 'galeria' %}">
-              <img src="{{ obra.imagenObra.url }}" class="d-block w-100 img-fluid" alt="..." style="height: 600px;">
-            </a>
-            <div class="carousel-caption d-none d-md-block">
-              <h5>{{ obra.nombreObra}}</h5>
-              <p>{{ obra.historia}}</p>
-            </div>
-          </div>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
-          data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
+      {% else %}
+        <div class="text-center">
+          <p style="font-size: 24px; margin-top: 50px;">No hay obras actualmente</p>
+        </div>
+      {% endif %}
     </div>
   </div>
 </div>

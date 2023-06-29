@@ -9,7 +9,7 @@ class ContactoForm(forms.ModelForm):
         fields = "__all__"  
 
 class ArtistaForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput())
+    contraseña = forms.CharField(widget=forms.PasswordInput())
     class Meta:
         model = Artista
         fields = "nombre", "apellido", "correo", "contraseña", "estilo", "descripcion", "foto_perfil"

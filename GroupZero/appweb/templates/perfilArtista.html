@@ -24,7 +24,7 @@
 </style>
 
 <!--
-  OBRAS APROBADAS
+  OBRAS RECHAZADAS
 -->
 
 <div class="container" id="OP2">
@@ -100,7 +100,7 @@
           </thead>
           <tbody>
             {% for obra in publicaciones %}
-            {% if user.id == obra.autor_id %}
+            {% if user.id == obra.autor.id %}
             {% if obra.estado == 1 %}
             <tr>
               <th scope="row">{{ obra.id }}</th>

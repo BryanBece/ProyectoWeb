@@ -73,43 +73,17 @@
         </li>
         </ul>
         {% endif %}
-        <button class="btn btn-outline-success me-2" type="button" data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasRight">
-          Buscar
-        </button>
+        <form action="{% url 'galeria' %}" method="post">
+          {% csrf_token %}
+          <div class="search-container">
+            <input type="search" name="busqueda" class="form-control" id="" placeholder="Búsqueda obra o artista..." />
+          </div>
+        </form>
+        
+        
       </div>
     </div>
   </nav>
-
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasRightLabel">Búsqueda</h5>
-      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
-    </div>
-    <div class="offcanvas-body">
-      <form>
-        <div class="mb-3">
-          <label for="busquedaInput" class="form-label">Buscar por artista</label>
-          <!------------------------modificado----------------------->
-          <input type="text" class="form-control" id="txtBuscarArtista" placeholder="Ingrese nombre de artista" />
-        </div>
-        <!--------------------------------BOTON BUSCAR ARTISTA------------------------------------------------->
-        <button type="button" class="btn btn-outline-success" name="btnBuscarArtista" id="btnBuscarArtista"
-          onclick="buscarArtista()">Buscar</button>
-      </form>
-      <br />
-      <form>
-        <div class="mb-3">
-          <label for="busquedaInput" class="form-label">Buscar por obra</label>
-          <!-----------------------------------linea que cambia ---------------------------------->
-          <input type="text" class="form-control" id="txtBuscarObra" placeholder="Ingrese nombre de la obra" />
-        </div>
-        <!------------------------------------BOTON BUSCAR POR OBRA ------LINEA QUE CAMBIA------->
-        <button type="button" class="btn btn-outline-success" name="btnBuscarObra" id="btnBuscarObra"
-          onclick="buscarObra()">Buscar</button>
-      </form>
-    </div>
-  </div>
 
 
 

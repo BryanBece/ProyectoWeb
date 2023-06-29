@@ -5,6 +5,7 @@ from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.urls import reverse
+from django.db.models import Q
 
 # Create your views here.
 
@@ -40,14 +41,23 @@ def artistas(request):
 
 def galeria(request):
     Obras = Obra.objects.all()
-
-    #obra = Obra.objects.raw("select * from appweb_Obra where autor = user")
-
     data = {
         'form': ContactoForm(),
         'Obras': Obras
     }
 
+    if request.method == 'POST':
+        buscar = request.POST.get('busqueda')
+        print(buscar)
+        
+        Obras = Obra.objects.filter(Q(nombreApellido_Autor__icontains=buscar) | Q(nombreObra__icontains=buscar))
+        data['Obras'] = Obras
+        print(Obras)
+        
+        if not Obras:
+            messages.error(request, "No se encontraron resultados")
+            data['Obras'] = Obra.objects.all()
+            print(Obras)
     return render(request, 'galeria.html', data)
 
 # ------------------------------
@@ -86,24 +96,23 @@ def login_artista(request):
 
     data = {
         "publicaciones": publicaciones
-    }
+    } 
+    
 
     return render(request, 'perfilArtista.html', data)
-
+@login_required
 def login_administrador(request):
     publicaciones = Obra.objects.all()
+    #Obtener todos los usuarios del grupo Artistas
+    artistas = User.objects.filter(groups__name="Artistas")
 
     data = {
-        "publicaciones": publicaciones
+        "publicaciones": publicaciones,
+        "artistas": artistas
     }
 
     return render(request, 'perfilAdministrador.html', data)
 
-def artista1(request):
-    dataFormulario = {
-        'form': ContactoForm
-    }
-    return render(request, 'artista1.html', dataFormulario)
 
 
 def registro_user(request):
@@ -146,7 +155,7 @@ def registro_user(request):
     return render(request, "registration/registroUser.html", dataFormulario) # Cambiar a registroArtista.html si se quiere crear un artista
 
 
-
+@login_required
 def registro_Art(request):
     data = {
         'form': ArtistaForm()
@@ -188,7 +197,7 @@ def registro_Art(request):
                 artista.save()
 
                 messages.success(request, "Artista creado correctamente.")
-                return redirect(reverse("home"))
+                return redirect(reverse("perfilAdministrador"))
     else:
         form = ArtistaForm()
     return render(request, 'registration/registroArtista.html', data)
@@ -205,7 +214,7 @@ def registro_obra(request):
         form = ObraForm(request.POST, request.FILES)
         if form.is_valid():
             nombreObra = form.cleaned_data.get('nombreObra')
-            #nombreApellidoAutores = form.cleaned_data('nombreApellidoAutores')
+            nombreApellidoAutores = form.cleaned_data('nombreApellidoAutores')
             historia = form.cleaned_data.get('historia')
             imagenObra = form.cleaned_data.get('imagenObra')
             precio = form.cleaned_data.get('precio')
@@ -214,7 +223,7 @@ def registro_obra(request):
 
             obra = Obra()
             obra.nombreObra = nombreObra
-            #obra.nombreApellidoAutores = nombreApellidoAutores
+            obra.nombreApellido_Autor = nombreApellidoAutores
             obra.historia = historia
             obra.imagenObra = imagenObra
             obra.precio = precio
@@ -229,7 +238,7 @@ def registro_obra(request):
         form = ObraForm()
     return render(request, 'registration/registroObra.html', data)
 
-
+@login_required
 def aprobarObras(request, id):
     obra = get_object_or_404(Obra, id=id)
     obra.estado = 1
@@ -237,7 +246,7 @@ def aprobarObras(request, id):
     messages.success(request, 'La obra: ' + obra.nombreObra + ' ha sido aprobada')
 
     return redirect('perfilAdministrador')
-
+@login_required
 def rechazar_publicacion(request, publicacion_id):
     if request.method == 'POST':
         motivo_rechazo = request.POST.get('motivo_rechazo')
