@@ -17,4 +17,4 @@ class ArtistaForm(forms.ModelForm):
 class ObraForm(forms.ModelForm):
     class Meta:
         model = Obra
-        fields = "nombreObra", "medidas", "tecnica", "precio", "imagenObra", "historia","nombreApellido_Autor"
+        fields = "nombreObra", "nombreApellido_Autor", "medidas", "tecnica", "precio", "categoriaObra", "imagenObra", "historia"

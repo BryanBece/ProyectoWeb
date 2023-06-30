@@ -233,7 +233,7 @@ def registro_obra(request):
             obra.save()
 
             messages.success(request, "Obra creada correctamente.")
-            return redirect('home')
+            return redirect('perfilArt')
     else:
         form = ObraForm()
     return render(request, 'registration/registroObra.html', data)
