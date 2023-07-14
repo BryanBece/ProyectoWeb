@@ -18,3 +18,12 @@ class ObraForm(forms.ModelForm):
     class Meta:
         model = Obra
         fields = "nombreObra", "nombreApellido_Autor", "medidas", "tecnica", "precio", "categoriaObra", "imagenObra", "historia"
+
+class PostulacionForm(forms.ModelForm):
+    class Meta:
+        model = Postulacion
+        fields = "__all__"
+        labels = {
+            "motivación": "Cuéntanos por qué quieres ser parte de nuestro grupo de artistas:",
+        }
+    

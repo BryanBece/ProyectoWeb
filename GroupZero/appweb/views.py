@@ -246,6 +246,7 @@ def aprobarObras(request, id):
     messages.success(request, 'La obra: ' + obra.nombreObra + ' ha sido aprobada')
 
     return redirect('perfilAdministrador')
+
 @login_required
 def rechazar_publicacion(request, publicacion_id):
     if request.method == 'POST':
@@ -259,3 +260,31 @@ def rechazar_publicacion(request, publicacion_id):
     else:
         messages.error(request, 'Se produjo un error al rechazar la publicación.')
         return redirect('perfilAdministrador')
+
+def postulacion(request):
+
+    dataFormulario = {
+        'form': PostulacionForm()
+    }
+
+    if request.method == 'POST':
+        formulario = PostulacionForm(request.POST, request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "Postulación enviada")
+        else:
+            dataFormulario["form"] = formulario
+            messages.error(request, "Error al enviar la postulación")
+            dataFormulario["form"] = PostulacionForm()
+
+    return render(request, 'registration/registroFormArt.html', dataFormulario)
+
+@login_required
+def postulaciones(request):
+    postulaciones = Postulacion.objects.all().order_by('-id')
+
+    data = {
+        'postulaciones': postulaciones
+    }
+
+    return render(request, 'postulaciones.html', data)

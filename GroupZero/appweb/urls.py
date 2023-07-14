@@ -17,4 +17,6 @@ urlpatterns = [
     path('registro_obra/', registro_obra, name="reg_obra"),
     path('aprobarObras/<int:id>/', views.aprobarObras, name='aprobacionObras'),
     path('rechazar-publicacion/<int:publicacion_id>/', views.rechazar_publicacion, name='rechazar_publicacion'),
+    path('postulacion/', postulacion, name="postulacion"),
+    path('postulaciones/', postulaciones, name="postulaciones"),
 ]
